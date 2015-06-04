@@ -1,4 +1,4 @@
-package fr.iutinfo;
+package fr.lamphi.api;
 
 import static org.junit.Assert.assertEquals;
 

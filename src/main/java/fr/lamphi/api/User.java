@@ -1,4 +1,4 @@
-package fr.iutinfo;
+package fr.lamphi.api;
 
 public class User {
 	private String name;

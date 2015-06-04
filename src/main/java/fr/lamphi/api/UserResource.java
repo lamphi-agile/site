@@ -1,4 +1,4 @@
-package fr.iutinfo;
+package fr.lamphi.api;
 
 import java.util.ArrayList;
 import java.util.HashMap;

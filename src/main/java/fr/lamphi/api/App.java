@@ -1,4 +1,4 @@
-package fr.iutinfo;
+package fr.lamphi.api;
 
 import java.util.HashSet;
 import java.util.Set;
