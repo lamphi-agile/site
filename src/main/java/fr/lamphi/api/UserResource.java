@@ -33,6 +33,14 @@ public class UserResource {
 		return user;
 	}
 	
+	static{
+		User user= new User(1,"Celestin","Lajonie","etudiant","nitselec","lajonie.celestin@hotmail.fr","pomme","M");
+		users.put(1, user);
+		
+	
+	}
+	
+	
 	@DELETE
 	@Path("{id}")
 	public Response deleteUser(@PathParam("id") Integer id) {
