@@ -1,4 +1,4 @@
-package fr.lamphi;
+package fr.lamphi.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,10 +15,11 @@ public class Hello extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
+		
 		String simpleParam = getServletConfig().getInitParameter("simpleParam");
-		out.println("Hello World " + simpleParam);
-		out.close();
+		
+		request.setAttribute("param", simpleParam);
+		this.getServletContext().getRequestDispatcher("../view/Hello.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request,

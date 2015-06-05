@@ -1,4 +1,4 @@
-package cours;
+package fr.lamphi.cours;
 
 public class Cours {
 
