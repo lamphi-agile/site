@@ -42,15 +42,6 @@ public class UserResource {
 	    return Response.accepted().status(Status.NOT_FOUND).build();
 	}
 	
-	protected User find(String name) {
-		User out = null;
-		for (User user : users.values()) {
-			if (user.getName().equals(name)) {
-				return user;
-			}
-		}
-		return out;
-	}
 	protected User find(int id) {
 		return users.get(id);
 	}
@@ -69,11 +60,11 @@ public class UserResource {
 		oldUser.setName(user.getName());
 		return Response.status(200).entity(oldUser).build();
 	}
-	
+
 	@GET
-	@Path("/{name}")
-	public User getUser(@PathParam("name") String name ) {
-		User out = find(name);
+	@Path("/{id}")
+	public User getUser(@PathParam("id") int id ) {
+		User out = find(id);
 		if (out == null) {
 			throw new WebApplicationException(404);
 		}
