@@ -2,11 +2,9 @@
 <%@page import="fr.lamphi.api.Lesson"%>
 <%@page import="java.util.List"%>
 <<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
 <%@page import="java.io.*"%>
->>>>>>> parent of 61781cc... Prout
+=======
+>>>>>>> branch 'master' of https://github.com/lamphi-agile/site.git
 
 <%@ include file="include/header.jsp" %>
 
