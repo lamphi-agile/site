@@ -49,7 +49,7 @@
 										<% out.print(lesson.getId()); %>
 									</td>
 									<td>
-										<a href="#"><% out.print(lesson.getTitle()); %></a>
+										<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><% out.print(lesson.getTitle()); %></a>
 									</td>
 									<td>
 										<% out.print(lesson.getAuthor()); %>
