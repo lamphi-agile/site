@@ -12,21 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.lamphi.api.Lesson;
+import fr.lamphi.api.LessonRessource;
+
 @WebServlet(name = "testServlet", urlPatterns = { "/hello" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
 public class Hello extends HttpServlet {
 
+	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		Lesson lesson = new Lesson("La lesson du "+ System.currentTimeMillis(), 1, "Test", ""+System.currentTimeMillis(), false);
 		
-		String simpleParam = getServletConfig().getInitParameter("simpleParam");
-		InputStream is = new URL("").openStream();
-		request.setAttribute("param", simpleParam);
-		this.getServletContext().getRequestDispatcher("../view/Hello.jsp").forward(request, response);
+		LessonRessource lr = new LessonRessource();
+		lr.createLesson(lesson);
+		
+		response.sendRedirect("index.jsp");
 	}
-
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
 }
