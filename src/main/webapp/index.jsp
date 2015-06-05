@@ -1,7 +1,6 @@
 <%@page import="fr.lamphi.api.LessonRessource"%>
 <%@page import="fr.lamphi.api.Lesson"%>
 <%@page import="java.util.List"%>
-<%@page import="java.io.*"%>
 
 <%@ include file="include/header.jsp" %>
 
@@ -15,8 +14,7 @@
         <div class="page-header" id="banner">
 			<div class="row">
 				<div class="col-lg-8 col-md-7 col-sm-6">
-					<h1>Cerulean</h1>
-					<p class="lead">A calm blue sky</p>
+					<h1>Les cours</h1>
 				</div>
 			</div>
 		</div>
@@ -27,9 +25,6 @@
 
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="page-header">
-						<h1 id="tables">Les cours</h1>
-					</div>
 
 					<div class="bs-component">
 						<table class="table table-striped table-hover ">
@@ -49,7 +44,11 @@
 										<% out.print(lesson.getId()); %>
 									</td>
 									<td>
+<<<<<<< HEAD
 										<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><% out.print(lesson.getTitle()); %></a>
+=======
+										<a href="lesson.jsp?id=<% out.print(lesson.getId()); %>"><% out.print(lesson.getTitle()); %></a>
+>>>>>>> branch 'master' of https://github.com/lamphi-agile/site.git
 									</td>
 									<td>
 										<% out.print(lesson.getAuthor()); %>
