@@ -14,10 +14,13 @@
     <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Liste des cours
+                <h1 class="page-header">Liste des cours  <% out.println("Coucou les gars"); %>
                 </h1>
             </div>
         </div>
+        
+       
+        
         <!-- /.row -->
        <% List<Lesson> lessons = new LessonRessource().getlessons(10); %>
         <!-- Projects Row -->
