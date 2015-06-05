@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
-import cours.*;
+import fr.lamphi.cours.*;
 
 @Path("/lesson")
 @Produces(MediaType.APPLICATION_JSON)
