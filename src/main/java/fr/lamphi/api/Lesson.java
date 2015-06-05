@@ -3,6 +3,7 @@ package fr.lamphi.api;
 public class Lesson {
 
 	private String title;
+	private String category;
 	private String author;
 	private String creationDate;
 	private boolean certified;
@@ -10,8 +11,9 @@ public class Lesson {
 	
 	public Lesson(){}
 	
-	public Lesson(String titre, int id, String auteur, String dateCreate, boolean isValide){
+	public Lesson(String titre, String category, int id, String auteur, String dateCreate, boolean isValide){
 		this.title=titre;
+		this.category=category;
 		this.id=id;
 		this.author=auteur;
 		this.creationDate=dateCreate;
@@ -20,6 +22,10 @@ public class Lesson {
 	
 	public String getTitle(){
 		return title;
+	}
+
+	public String getCategory() {
+		return category;
 	}
 	
 	public int getId(){
@@ -37,6 +43,11 @@ public class Lesson {
 	public boolean getCertified(){
 		return certified;
 	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	
 	public void setTitle(String title){
 		this.title=title;

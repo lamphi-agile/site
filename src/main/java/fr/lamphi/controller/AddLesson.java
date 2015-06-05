@@ -15,13 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import fr.lamphi.api.Lesson;
 import fr.lamphi.api.LessonRessource;
 
-@WebServlet(name = "testServlet", urlPatterns = { "/hello" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
-public class Hello extends HttpServlet {
+@WebServlet(name = "addLessonServlet", urlPatterns = { "/AddLesson" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
+public class AddLesson extends HttpServlet {
 
 	
-	protected void doGet(HttpServletRequest request,
+	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		Lesson lesson = new Lesson("La lesson du "+ System.currentTimeMillis(), 1, "Test", ""+System.currentTimeMillis(), false);
+		Lesson lesson = new Lesson(request.getParameter("name"), request.getParameter("categ"), 1, "L'auteur du CUL !", ""+System.currentTimeMillis(), false);
 		
 		LessonRessource lr = new LessonRessource();
 		lr.createLesson(lesson);
