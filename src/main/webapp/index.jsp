@@ -1,7 +1,10 @@
 <%@page import="fr.lamphi.api.LessonRessource"%>
 <%@page import="fr.lamphi.api.Lesson"%>
 <%@page import="java.util.List"%>
+<<<<<<< HEAD
 <%@page import="java.io.*"%>
+=======
+>>>>>>> branch 'master' of https://github.com/lamphi-agile/site.git
 
 <%@ include file="include/header.jsp" %>
 
