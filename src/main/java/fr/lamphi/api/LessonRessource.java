@@ -37,7 +37,7 @@ public class LessonRessource {
 	@GET
 	@Path("/{id}")
 	public Cours getUser(@PathParam("id") int id ) {
-		Cours out = lessons.get(id);
+		Cours out = (Cours)lessons.get(id);
 		if (out == null) {
 			throw new WebApplicationException(404);
 		}
