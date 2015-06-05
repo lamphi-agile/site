@@ -28,7 +28,11 @@ public class LessonRessource {
 	static{
 		Lesson newLesson = new Lesson("Le C !", 1, "TestAuthr", "0000-00-00 00:00:00", false);
 		lessons.put(1, newLesson);
+		
+		Lesson newLesson2 = new Lesson("Le Java !", 2, "TestAuthr", "0000-00-00 00:00:00", false);
+		lessons.put(2, newLesson2);
 	}
+	
 	@POST
 	public Lesson createLesson(Lesson lesson) {
 		int id = lessons.size();

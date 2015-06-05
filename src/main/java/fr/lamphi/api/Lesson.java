@@ -8,9 +8,7 @@ public class Lesson {
 	private boolean certified;
 	private int id;
 	
-	public Lesson(){
-		
-	}
+	public Lesson(){}
 	
 	public Lesson(String titre, int id, String auteur, String dateCreate, boolean isValide){
 		this.title=titre;
