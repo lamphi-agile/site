@@ -44,11 +44,7 @@
 										<% out.print(lesson.getId()); %>
 									</td>
 									<td>
-<<<<<<< HEAD
 										<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><% out.print(lesson.getTitle()); %></a>
-=======
-										<a href="lesson.jsp?id=<% out.print(lesson.getId()); %>"><% out.print(lesson.getTitle()); %></a>
->>>>>>> branch 'master' of https://github.com/lamphi-agile/site.git
 									</td>
 									<td>
 										<% out.print(lesson.getAuthor()); %>
