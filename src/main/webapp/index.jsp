@@ -1,8 +1,6 @@
 <%@page import="fr.lamphi.api.LessonRessource"%>
 <%@page import="fr.lamphi.api.Lesson"%>
 <%@page import="java.util.List"%>
-
-<<<<<<< HEAD
 <%@page import="java.io.*"%>
 
 <%@ include file="include/header.jsp" %>
