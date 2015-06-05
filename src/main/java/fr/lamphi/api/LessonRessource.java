@@ -26,10 +26,10 @@ public class LessonRessource {
 	private static Map<Integer, Lesson> lessons = new HashMap<>();
 	
 	static{
-		Lesson newLesson = new Lesson("Le C !", 1, "TestAuthr", "0000-00-00 00:00:00", false);
+		Lesson newLesson = new Lesson("Le C !", "Informatique", 1, "TestAuthr", "0000-00-00 00:00:00", false);
 		lessons.put(1, newLesson);
 		
-		Lesson newLesson2 = new Lesson("Le Java !", 2, "TestAuthr", "0000-00-00 00:00:00", false);
+		Lesson newLesson2 = new Lesson("Le Java !", "Informatique", 2, "TestAuthr", "0000-00-00 00:00:00", false);
 		lessons.put(2, newLesson2);
 	}
 	

@@ -21,7 +21,7 @@ public class Hello extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		Lesson lesson = new Lesson("La lesson du "+ System.currentTimeMillis(), 1, "Test", ""+System.currentTimeMillis(), false);
+		Lesson lesson = new Lesson(request.getParameter("name"), request.getParameter("categ"), 1, "Test", ""+System.currentTimeMillis(), false);
 		
 		LessonRessource lr = new LessonRessource();
 		lr.createLesson(lesson);
