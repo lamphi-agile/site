@@ -1,13 +1,17 @@
 package fr.lamphi.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
@@ -39,4 +43,10 @@ public class LessonRessource {
 		}
 		return out;
 	}
+	
+	@GET
+	public List<Cours> getLessons(@DefaultValue("10") @QueryParam("limit") int limit) {
+		return new ArrayList<Cours>(lessons.values());
+	}
+
 }
