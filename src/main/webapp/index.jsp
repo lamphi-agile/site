@@ -1,6 +1,8 @@
-<%@page import="org.eclipse.persistence.internal.oxm.record.json.JSONReader"%>
-<%@page import="fr.lamphi.api.*"%>
+<%@page import="fr.lamphi.api.LessonRessource"%>
+<%@page import="fr.lamphi.api.Lesson"%>
 <%@page import="java.util.List"%>
+
+<<<<<<< HEAD
 <%@page import="java.io.*"%>
 
 <%@ include file="include/header.jsp" %>
@@ -12,24 +14,60 @@
  	<!-- Page Content -->
     <div class="container">
     <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Liste des cours  <% out.println("Coucou les gars"); %>
-                </h1>
-            </div>
-        </div>
-        
-       
-        
-        <!-- /.row -->
-       <% List<Lesson> lessons = new LessonRessource().getlessons(10); %>
-        <!-- Projects Row -->
-       	<ul>
-       		<% for(Lesson lesson : lessons){ 
-       			out.print("<li>"+lesson.getTitle()+"</li>"); 
-       		} %>
-       	</ul>
-        <!-- /.row -->
+        <div class="page-header" id="banner">
+			<div class="row">
+				<div class="col-lg-8 col-md-7 col-sm-6">
+					<h1>Cerulean</h1>
+					<p class="lead">A calm blue sky</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Tables
+      ================================================== -->
+		<div class="bs-docs-section">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="page-header">
+						<h1 id="tables">Les cours</h1>
+					</div>
+
+					<div class="bs-component">
+						<table class="table table-striped table-hover ">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Titre</th>
+									<th>Auteur</th>
+									<th>Note</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%List<Lesson> lessons = new LessonRessource().getlessons(10);
+                  					for(Lesson lesson : lessons) {%>
+								<tr>
+									<td>
+										<% out.print(lesson.getId()); %>
+									</td>
+									<td>
+										<a href="#"><% out.print(lesson.getTitle()); %></a>
+									</td>
+									<td>
+										<% out.print(lesson.getAuthor()); %>
+									</td>
+									<td>
+										<% out.print(lesson.getCertified()); %>
+									</td>
+								</tr>
+								<%} %>
+							</tbody>
+						</table>
+					</div>
+					<!-- /example -->
+				</div>
+			</div>
+		</div>
 
         <hr>
 		<%@ include file="include/footer.jsp" %>
