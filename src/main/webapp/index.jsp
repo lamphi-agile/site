@@ -2,9 +2,6 @@
 <%@page import="fr.lamphi.api.Lesson"%>
 <%@page import="java.util.List"%>
 
-<<<<<<< HEAD
-<%@page import="java.io.*"%>
-
 <%@ include file="include/header.jsp" %>
 
   <body>
@@ -51,7 +48,7 @@
 										<% out.print(lesson.getId()); %>
 									</td>
 									<td>
-										<a href="#"><% out.print(lesson.getTitle()); %></a>
+										<a href="lesson.jsp?id=<% out.print(lesson.getId()); %>"><% out.print(lesson.getTitle()); %></a>
 									</td>
 									<td>
 										<% out.print(lesson.getAuthor()); %>
