@@ -5,15 +5,15 @@
 	<%@ include file="include/navbar.jsp" %>
     	
 
- 	<!-- Page Content -->
+ 		<!-- Page Content -->
     <div class="container">
-    <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">404 - Not Found
-                </h1>
-            </div>
-        </div>
+    <div class="page-header" id="banner">
+			<div class="row">
+				<div class="col-lg-8 col-md-7 col-sm-6">
+					<h1>404 - Not Found</h1>
+				</div>
+			</div>
+		</div>
     
 
         <hr>
