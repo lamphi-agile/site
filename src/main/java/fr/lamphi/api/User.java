@@ -1,12 +1,25 @@
 package fr.lamphi.api;
 
 public class User {
+	private String pseudo;
 	private String name;
+	private String surname;
+	private String email;
+	private String status;
+	private String password;
+	private String sex;
+	
 	private int id = 0;
 
-	public User(int id, String name) {
+	public User(int id, String name, String surname, String status, String pseudo, String email, String password, String sex) {
 		this.id = id;
-		this.name = name;
+		this.name = name;		
+		this.surname = surname;
+		this.setStatus(status);
+		this.pseudo = pseudo;
+		this.setEmail(email);
+		this.setPassword(password);
+		this.setSex(sex);		
 	}
 
 	public User() {
@@ -34,7 +47,56 @@ public class User {
 	}
 
 	public String toString() {
-		return id + ": " + name;
+		return id + ": " + surname + " " + name + " - " + status;
+				
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 }
