@@ -60,6 +60,7 @@
 				</div>
 
 				<input id="inputRating" class="rating" data-symbol="&#xf19d;" data-glyphicon="false" data-rating-class="rating-fa">
+				
 				<a href=" http://www.facebook.com" target="_blank">
 					<img src="img/facebook.png"  alt="facebook" width = "50px" heigth = "50px"/>
 				</a> 
@@ -72,12 +73,6 @@
 				<a href=" http://www.linkedin.com" target="_blank">
 					<img src="img/linkedin.png"  alt="linkedin" width = "50px" heigth = "50px"/>
 				</a> 
-				<hr>
-				<div id="contenu">
-					<%
-						out.print(lesson.getContenu());
-					%>
-				</div>
 				<hr>
 
 				<form action="AddComment" method="post">
