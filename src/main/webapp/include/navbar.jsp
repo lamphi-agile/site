@@ -12,14 +12,13 @@
 		<div class="navbar-collapse collapse" id="navbar-main">
 			<ul class="nav navbar-nav">
 				
-				<li><a href="addlesson.jsp">Ajouter un Cour</a></li>
+				<li><a href="addlesson.jsp">Ajouter un cours</a></li>
 				
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="http://builtwithbootstrap.com/" target="_blank">Inscription</a></li>
+				<li><a href="Register.jsp" target="_blank">Inscription</a></li>
 				<li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">Connexion</a></li>
-				<li><a href="Register">Inscription</a></li>
 				<li><a href="profil.jsp?id=1">Mon profile</a></li>
 			</ul>
 

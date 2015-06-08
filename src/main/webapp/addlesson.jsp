@@ -10,7 +10,7 @@
         <div class="page-header" id="banner">
 			<div class="row">
 				<div class="col-lg-8 col-md-7 col-sm-6">
-					<h1>Ajouter un Cour</h1>
+					<h1>Ajouter un cours</h1>
 				</div>
 			</div>
 		</div>
@@ -24,7 +24,7 @@
 		    <label for="exampleInputPassword1">Contenu</label>
 		    <textarea name="contenu" class="form-control" rows="3"></textarea>
 		  </div>
-		  <button type="submit" class="btn btn-default">Submit</button>
+		  <button type="submit" class="btn btn-default">Soumettre</button>
 		</form>
 		
 	<hr>
