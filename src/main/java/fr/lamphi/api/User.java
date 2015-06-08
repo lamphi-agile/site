@@ -42,9 +42,9 @@ public class User {
 		this.name = name;
 	}
 
-	public boolean equals(Object u) {
+	/*public boolean equals(Object u) {
 		return name.equals(((User) u).name);
-	}
+	}*/
 
 	public String toString() {
 		return id + ": " + surname + " " + name + " - " + status;
