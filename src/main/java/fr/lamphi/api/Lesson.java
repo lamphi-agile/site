@@ -9,10 +9,11 @@ public class Lesson {
 	private String creationDate;
 	private boolean certified;
 	private int id;
+	private int note;
 	
 	public Lesson(){}
 	
-	public Lesson(String titre, String category, String contenu, int id, String auteur, String dateCreate, boolean isValide){
+	public Lesson(String titre, String category, String contenu, int id, String auteur, String dateCreate, boolean isValide, int note){
 		this.title=titre;
 		this.category=category;
 		this.id=id;
@@ -20,8 +21,17 @@ public class Lesson {
 		this.creationDate=dateCreate;
 		this.certified=isValide;
 		this.contenu = contenu;
+		this.note = note;
 	}
 	
+	public int getNote() {
+		return note;
+	}
+
+	public void setNote(int note) {
+		this.note = note;
+	}
+
 	public String getTitle(){
 		return title;
 	}

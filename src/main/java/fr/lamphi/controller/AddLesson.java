@@ -21,7 +21,7 @@ public class AddLesson extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		Lesson lesson = new Lesson(request.getParameter("title"),  "",request.getParameter("contenu"), 1, "L'auteur du CUL !", ""+System.currentTimeMillis(), false);
+		Lesson lesson = new Lesson(request.getParameter("title"),  "",request.getParameter("contenu"), 1, "L'auteur du CUL !", ""+System.currentTimeMillis(), false, 0);
 		
 		LessonRessource lr = new LessonRessource();
 		lr.createLesson(lesson);
