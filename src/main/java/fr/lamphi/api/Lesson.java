@@ -9,6 +9,7 @@ public class Lesson {
 	private String creationDate;
 	private boolean certified;
 	private int id;
+	private int note;
 	
 	public Lesson(){}
 	
@@ -20,8 +21,17 @@ public class Lesson {
 		this.creationDate=dateCreate;
 		this.certified=isValide;
 		this.contenu = contenu;
+		this.note = note;
 	}
 	
+	public int getNote() {
+		return note;
+	}
+
+	public void setNote(int note) {
+		this.note = note;
+	}
+
 	public String getTitle(){
 		return title;
 	}
