@@ -15,11 +15,11 @@ public class User {
 		this.id = id;
 		this.name = name;		
 		this.surname = surname;
-		this.setStatus(status);
+		this.status = status;
 		this.pseudo = pseudo;
-		this.setEmail(email);
-		this.setPassword(password);
-		this.setSex(sex);		
+		this.email = email;
+		this.password = password;
+		this.sex = sex;		
 	}
 
 	public User() {
