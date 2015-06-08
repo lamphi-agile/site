@@ -38,7 +38,10 @@
 
 			<div class="row">
 				<div class="col-lg-12">
+					<div id="contenu">
 					<% out.print(lesson.getContenu()); %>
+					
+					</div>
 				</div>
 			</div>
 		</div>  			
@@ -57,6 +60,17 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    
+    
+	
+<script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
+<script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
+
+    <script type="text/javascript">
+    new Editor({
+    	  element: document.getElementById('contenu')
+    	})
+    </script>
 
   </body>
 </html>
