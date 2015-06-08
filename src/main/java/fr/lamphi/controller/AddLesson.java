@@ -18,21 +18,17 @@ public class AddLesson extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+            HttpServletResponse response) throws ServletException, IOException {
 
 
-		User user = (User)request.getSession().getAttribute("user");
-<<<<<<< HEAD
-		Lesson lesson = new Lesson(request.getParameter("title"),  "",request.getParameter("contenu"), 1, user, ""+System.currentTimeMillis(), false,0);
-=======
-		Lesson lesson = new Lesson(request.getParameter("title"),  "",request.getParameter("contenu"), 1, user, ""+System.currentTimeMillis(), false,0);
+        User user = (User)request.getSession().getAttribute("user");
+        Lesson lesson = new Lesson(0,request.getParameter("title"), request.getParameter("contenu"), user, ""+System.currentTimeMillis(),1, false,0);
 
->>>>>>> 9f4249bcb6920010ef04f5410758e93342db012f
 
-		
-		LessonRessource lr = new LessonRessource();
-		lr.createLesson(lesson);
-		
-		response.sendRedirect("index.jsp");
+       
+        LessonRessource lr = new LessonRessource();
+        lr.createLesson(lesson);
+       
+        response.sendRedirect("index.jsp");
 	}
 }
