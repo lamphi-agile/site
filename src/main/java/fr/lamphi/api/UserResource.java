@@ -34,8 +34,8 @@ public class UserResource {
 	}
 	
 	static{
-		User user= new User(1,"LAJONIE","Célestin","etu","nitselec","lajonie.celestin@hotmail.fr","pomme","M");
-		User user2= new User(2,"CHAVAL","Clément","etu","cchaval","clement.chaval@free.fr","pomme","M");
+		User user= new User(1, "CHAVAL", "Clément", "etu", "cchaval", "clement.chaval@free.fr", "proutprout", "M");
+		User user2= new User(2, "CLAVIER", "Thomas", "prof", "tclavier", "thomas.clavier@univ-lille1.fr", "proutprout", "M");
 		users.put(1, user);
 		users.put(2, user2);
 	}

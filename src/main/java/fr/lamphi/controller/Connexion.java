@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.lamphi.api.User;
+import fr.lamphi.api.UserResource;
 
 /**
  * Servlet implementation class Connexion
@@ -36,9 +37,9 @@ public class Connexion extends HttpServlet {
 		boolean deconnect = request.getParameter("deconnect")==null?false:true;
 		if(status != null) {
 			if(status.equals("etu"))
-				session.setAttribute("user", new User(1, "CHAVAL", "Clément", "etu", "cchaval", "clement.chaval@free.fr", "proutprout", "M"));
+				session.setAttribute("user", new UserResource().getUser(1));
 			else if(status.equals("prof"))
-				session.setAttribute("user", new User(1, "CLAVIER", "Thomas", "prof", "tclavier", "thomas.clavier@univ-lille1.fr", "proutprout", "M"));
+				session.setAttribute("user", new UserResource().getUser(2));
 		} else if(deconnect) {
 			session.invalidate();
 		}
