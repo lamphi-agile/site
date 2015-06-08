@@ -14,9 +14,9 @@ public class Lesson {
 	public Lesson(){}
 		
 	public Lesson(int id, String titre, String contenu, User auteur, String dateCreate, int category, boolean isValide, double note){
-		this.title=titre;
-		this.category=category;
 		this.id=id;
+		this.title=titre;
+		this.category=category;		
 		this.author=auteur;
 		this.creationDate=dateCreate;
 		this.certified=isValide;

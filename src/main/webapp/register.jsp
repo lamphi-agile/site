@@ -66,8 +66,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputNom" class="col-sm-2 control-label">Quel
-					est votre Statut ? </label>
+				<label for="inputNom" class="col-sm-2 control-label">Statut ? </label>
 				<div class="col-sm-10">
 					<select name="status" id="status">
 						<option value="Enseignant">Enseignant</option>
@@ -75,7 +74,11 @@
 					</select>
 				</div>
 			</div>
-			<input type="submit" value="Inscription">
+			<div class="form-group">
+   				 <div class="col-sm-offset-2 col-sm-10">
+     				 <button type="submit" class="btn btn-default">Inscription</button>
+   				 </div>
+  			</div>
 		</form>
 
 
