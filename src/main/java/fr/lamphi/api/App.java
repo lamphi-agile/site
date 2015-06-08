@@ -27,5 +27,6 @@ public class App extends Application {
 		SQLiteDataSource ds = new SQLiteDataSource();
 		ds.setUrl("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"data.db");
 		dbi = new DBI(ds);
+		System.out.println("jdbi : "+"jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"data.db");
     }
 }
