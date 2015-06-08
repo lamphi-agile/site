@@ -16,7 +16,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<% if(session.getAttribute("user") == null) {	%>
-				<li><a href="register.jsp" target="_blank">Inscription</a></li>
+				<li><a href="register.jsp">Inscription</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#" id="themes">Connexion <span
 						class="caret"></span></a>

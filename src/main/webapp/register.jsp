@@ -49,33 +49,42 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="inputNom" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-10">
+					<input type="mail" name="email" placeholder="Email" required>
+				</div>
+			</div>
+			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Mot de
 					passe</label>
 				<div class="col-sm-10">
-					<input type="text" name="password" placeholder="Mot de passe"
+					<input type="password" name="password" placeholder="Mot de passe"
 						required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Sexe </label>
 				<div class="col-sm-10">
-					<select name="sexe" id="sex">
+					<select name="sex" id="sex">
 						<option value="Femme">Femme</option>
 						<option value="Homme">Homme</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputNom" class="col-sm-2 control-label">Quel
-					est votre Statut ? </label>
+				<label for="inputNom" class="col-sm-2 control-label">Statut ? </label>
 				<div class="col-sm-10">
 					<select name="status" id="status">
-						<option value="Enseignant">Enseignant</option>
-						<option value="Etudiant">Etudiant</option>
+						<option value="ens">Enseignant</option>
+						<option value="etu">Etudiant</option>
 					</select>
 				</div>
 			</div>
-			<input type="submit" value="Inscription">
+			<div class="form-group">
+   				 <div class="col-sm-offset-2 col-sm-10">
+     				 <button type="submit" class="btn btn-default">Inscription</button>
+   				 </div>
+  			</div>
 		</form>
 
 
