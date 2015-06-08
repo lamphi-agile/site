@@ -1,9 +1,6 @@
 package fr.lamphi.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.net.URL;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -15,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import fr.lamphi.api.Lesson;
 import fr.lamphi.api.LessonRessource;
 import fr.lamphi.api.User;
-import fr.lamphi.api.UserResource;
 
 @WebServlet(name = "addLessonServlet", urlPatterns = { "/AddLesson" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
 public class AddLesson extends HttpServlet {
@@ -23,12 +19,11 @@ public class AddLesson extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
+
+
 		User user = (User)request.getSession().getAttribute("user");
 		Lesson lesson = new Lesson(request.getParameter("title"),  "",request.getParameter("contenu"), 1, user, ""+System.currentTimeMillis(), false);
-=======
-		Lesson lesson = new Lesson(request.getParameter("title"),  "",request.getParameter("contenu"), 1, "L'auteur du CUL !", ""+System.currentTimeMillis(), false, 0);
->>>>>>> branch 'master' of https://github.com/lamphi-agile/site.git
+
 		
 		LessonRessource lr = new LessonRessource();
 		lr.createLesson(lesson);
