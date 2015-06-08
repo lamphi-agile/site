@@ -34,10 +34,10 @@ public class UserResource {
 	}
 	
 	static{
-		User user= new User(1,"Celestin","Lajonie","etudiant","nitselec","lajonie.celestin@hotmail.fr","pomme","M");
+		User user= new User(1,"LAJONIE","Célestin","etu","nitselec","lajonie.celestin@hotmail.fr","pomme","M");
+		User user2= new User(2,"CHAVAL","Clément","etu","cchaval","clement.chaval@free.fr","pomme","M");
 		users.put(1, user);
-		
-	
+		users.put(2, user2);
 	}
 	
 	

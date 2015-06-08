@@ -47,7 +47,7 @@ public class User {
 	}*/
 
 	public String toString() {
-		return id + ": " + surname + " " + name + " - " + status;
+		return surname + " " + name;
 				
 	}
 

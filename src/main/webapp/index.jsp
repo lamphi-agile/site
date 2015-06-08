@@ -48,7 +48,11 @@
 										<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><% out.print(lesson.getTitle()); %></a>
 									</td>
 									<td>
-										<a href="profil.jsp"><% out.print(lesson.getAuthor()); %></a>
+										<% User lessonUser = lesson.getAuthor();%>
+										<a href="profil.jsp?id=<%out.print(lessonUser.getId());%>">
+											<img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUser.getEmail()));%>?s=17"/>
+											<% out.print(lessonUser); %>
+										</a>
 									</td>
 									<td>
 										<% out.print(lesson.getCertified()); %>

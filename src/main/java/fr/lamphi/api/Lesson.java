@@ -5,14 +5,14 @@ public class Lesson {
 	private String title;
 	private String category;
 	private String contenu;
-	private String author;
+	private User author;
 	private String creationDate;
 	private boolean certified;
 	private int id;
 	
 	public Lesson(){}
 	
-	public Lesson(String titre, String category, String contenu, int id, String auteur, String dateCreate, boolean isValide){
+	public Lesson(String titre, String category, String contenu, int id, User auteur, String dateCreate, boolean isValide){
 		this.title=titre;
 		this.category=category;
 		this.id=id;
@@ -34,7 +34,7 @@ public class Lesson {
 		return id;
 	}
 	
-	public String getAuthor(){
+	public User getAuthor(){
 		return author;
 	}
 	
@@ -59,7 +59,7 @@ public class Lesson {
 		this.id=id;
 	}
 	
-	public void setAuthor(String author){
+	public void setAuthor(User author){
 		this.author=author;
 	}
 	

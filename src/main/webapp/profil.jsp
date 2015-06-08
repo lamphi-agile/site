@@ -29,7 +29,7 @@
 		<div class="page-header" id="banner">
 			<div class="row">
 				<div class="col-lg-8 col-md-7 col-sm-6">
-					<h1>Profil<br><img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(user.getEmail()));%>?s=50"/>   <small><% out.print(user.getPseudo()); %></small></h1>
+					<h1>Profil <img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(user.getEmail()));%>?s=40"/>   <small><% out.print(user.getPseudo()); %></small></h1>
 				</div>
 			</div>
 		</div>
