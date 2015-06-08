@@ -1,5 +1,4 @@
-<%@page
-	import="org.eclipse.persistence.internal.oxm.record.json.JSONReader"%>
+<%@page import="org.eclipse.persistence.internal.oxm.record.json.JSONReader"%>
 <%@page import="fr.lamphi.api.*"%>
 <%@page import="java.util.List"%>
 <%@page import="java.io.*"%>
@@ -13,9 +12,11 @@
 	<!-- Page Content -->
 	<div class="container">
 		<!-- Page Header -->
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Inscription</h1>
+		<div class="page-header" id="banner">
+			<div class="row">
+				<div class="col-lg-8 col-md-7 col-sm-6">
+					<h1>Inscription</h1>
+				</div>
 			</div>
 		</div>
 		<!-- /.row -->
@@ -56,9 +57,12 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputNom" class="col-sm-2 control-label">Sexe</label>
+				<label for="inputNom" class="col-sm-2 control-label">Sexe </label>
 				<div class="col-sm-10">
-					<input type="text" name="sex" placeholder="Sexe" required>
+					<select name="sexe" id="sex">
+						<option value="Femme">Femme</option>
+						<option value="Homme">Homme</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group">
