@@ -21,8 +21,8 @@
 		    <input type="text" name="title" class="form-control" id="inputTitle" placeholder="Titre">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputPassword1">Contenu</label>
-		    <textarea name="contenu" class="form-control" rows="3"></textarea>
+		    <label for="inputContenu">Contenu</label>
+		    <textarea name="contenu" id="contenu" class="form-control" rows="3"></textarea>
 		  </div>
 		  <button type="submit" class="btn btn-default">Soumettre</button>
 		</form>
@@ -33,13 +33,21 @@
     </div>
     <!-- /.container -->
 
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+	
+<script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
+<script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
+
+    <script type="text/javascript">
+    new Editor({
+    	  element: document.getElementById('contenu')
+    	})
+    </script>
 
   </body>
 </html>
