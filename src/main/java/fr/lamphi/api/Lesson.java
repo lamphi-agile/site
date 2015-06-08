@@ -13,7 +13,7 @@ public class Lesson {
 	
 	public Lesson(){}
 	
-	public Lesson(String titre, String category, String contenu, int id, User auteur, String dateCreate, boolean isValide){
+	public Lesson(String titre, String category, String contenu, int id, User auteur, String dateCreate, boolean isValide, int note){
 		this.title=titre;
 		this.category=category;
 		this.id=id;
