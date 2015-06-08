@@ -1,5 +1,5 @@
-<%@page import="fr.lamphi.api.LessonRessource"%>
-<%@page import="fr.lamphi.api.Lesson"%>
+<%@page import="fr.lamphi.api.LessonDivisionRessource"%>
+<%@page import="fr.lamphi.api.LessonDivision"%>
 <%@page import="java.util.List"%>
 <%@page import="java.io.*"%>
 
@@ -15,7 +15,7 @@
         <div class="page-header" id="banner">
 			<div class="row">
 				<div class="col-lg-8 col-md-7 col-sm-6">
-					<h1>Les cours</h1>
+					<h1>Les Catégories</h1>
 				</div>
 			</div>
 		</div>
@@ -31,32 +31,18 @@
 						<table class="table table-striped table-hover ">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Titre</th>
-									<th>Auteur</th>
-									<th>Note</th>
+									<th>Categorie</th>									
 								</tr>
 							</thead>
 							<tbody>
-								<%List<Lesson> lessons = new LessonRessource().getlessons(10);
-                  					for(Lesson lesson : lessons) {%>
-								<tr>
-									<td>
-										<% out.print(lesson.getId()); %>
+								<%List<LessonDivision> lessondiv= new LessonDivisionRessource().getListLessonDiv(10);
+                  					for(LessonDivision lesson : lessondiv) {%>
+								<tr>									
 									</td>
 									<td>
-										<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><% out.print(lesson.getTitle()); %></a>
-									</td>
-									<td>
-										<% User lessonUser = lesson.getAuthor();%>
-										<a href="profil.jsp?id=<%out.print(lessonUser.getId());%>">
-											<img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUser.getEmail()));%>?s=17"/>
-											<% out.print(lessonUser); %>
-										</a>
-									</td>
-									<td>
-										<% out.print(lesson.getNote()); %>
-									</td>
+										<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><% out.print(lesson.getCategory()); %></a>
+									</td>									
+									
 								</tr>
 								<%} %>
 							</tbody>
