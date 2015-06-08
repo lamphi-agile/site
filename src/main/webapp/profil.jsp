@@ -7,11 +7,12 @@
     	
     
     <% 
-    	LessonRessource ressource = new LessonRessource(); 
-   		Lesson lesson = null;
+    	User user = null; 
+    	UserResource resource = new UserResource();
+    	
     	if( request.getParameter("id") != null ){
     		try{
-   			lesson = ressource.getlesson(Integer.parseInt(request.getParameter("id")));
+   			user = resource.getUser(Integer.parseInt(request.getParameter("id")));
     		}
     		catch(WebApplicationException e){
     			response.sendRedirect("404.jsp");
@@ -23,26 +24,34 @@
 
  	<!-- Page Content -->
     <div class="container">
-      <!-- Page Header -->
-        <div class="page-header" id="banner">
+    <div class="page-header" id="banner">
 			<div class="row">
 				<div class="col-lg-8 col-md-7 col-sm-6">
-					<h1><% out.print(lesson.getTitle()); %> <small><% out.print(lesson.getAuthor()); %></small></h1>
+					<h1><% out.print(user.getPseudo()); %></h1>
 				</div>
 			</div>
 		</div>
-
-		<!-- Tables
-      ================================================== -->
-		<div class="bs-docs-section">
-
-			<div class="row">
-				<div class="col-lg-12">
-					<% out.print(lesson.getContenu()); %>
-				</div>
-			</div>
-		</div>  			
-
+    
+        <!-- Projects Row -->
+       	<ul>
+       		<% 
+       		out.print("ID : "+user.getId());
+       		%><br><%
+       		out.print("Name : "+user.getName());
+       		%><br><%
+       		out.print("Surname : "+user.getSurname());
+       		%><br><%
+       		out.print("Email : "+user.getEmail());
+       		%><br><%
+       		out.print("Type  d'utilisateur : "+user.getStatus());
+       		%><br><%
+       		out.print("Sexe : "+user.getSex());	
+       		%>
+       	</ul>
+        <!-- /.row -->
+        
+        
+       
 
         <hr>
 		<%@ include file="include/footer.jsp" %>
