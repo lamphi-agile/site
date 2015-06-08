@@ -2,6 +2,7 @@ package fr.lamphi.controller;
 
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.lamphi.api.User;
+import fr.lamphi.api.UserDBResource;
 import fr.lamphi.api.UserResource;
 
 
@@ -25,16 +27,16 @@ public class Inscription extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-		String name=req.getParameter("Nom");
-		String surname=req.getParameter("Prenom");
-		String pseudo=req.getParameter("Pseudo");
-		String email=req.getParameter("Email");
-		String status=req.getParameter("Statut");
-		String password=req.getParameter("Mot de passe");
-		String sex=req.getParameter("Sexe");
+		String name=req.getParameter("name");
+		String surname=req.getParameter("surname");
+		String pseudo=req.getParameter("pseudo");
+		String email=req.getParameter("email");
+		String status=req.getParameter("status");
+		String password=req.getParameter("password");
+		String sex=req.getParameter("sex");
 		
 		User newUser = new User(2, name, surname, status, pseudo, email, password, sex);
-		UserResource us = new UserResource();
+		UserDBResource us = new UserDBResource();
 		
 		us.createUser(newUser);
 		

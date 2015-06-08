@@ -10,12 +10,12 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface UserDao {
-	@SqlUpdate("create table users(id integer primary key autoincrement, name varchar(100), forname varchar(100), email varchar(100), username varchar(100), password varchar(100), sex varchar(1), status varchar(3), create_date datetime)")
+	@SqlUpdate("create table users(id integer primary key autoincrement, name text, surname text, email text, pseudo text, password text, sex text, status text, create_date datetime)")
 	void createUserTable();
 
-	@SqlUpdate("insert into users (name, forname, email, username, password, sex, status) values (:name, :forname, :email, :username, :password, :sex, :status)")
+	@SqlUpdate("insert into users (name, surname, email, pseudo, password, sex, status) values (:name, :surname, :email, :pseudo, :password, :sex, :status)")
 	@GetGeneratedKeys
-	int insert(@Bind("name") String name, @Bind("forname") String forname, @Bind("email") String email, @Bind("username") String username, @Bind("password") String password, @Bind("sex") String sex, @Bind("status") String status);
+	int insert(@Bind("name") String name, @Bind("surname") String surname, @Bind("email") String email, @Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("sex") String sex, @Bind("status") String status);
 
 	@SqlQuery("select * from users where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)

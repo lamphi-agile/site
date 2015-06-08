@@ -22,7 +22,6 @@ public class UserDBResource {
 		}
 		catch (Exception e) {
 			System.out.println("La table existe déjà !");
-			e.printStackTrace();
 		}
 	}
 	
