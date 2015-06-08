@@ -12,17 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import fr.lamphi.api.User;
 import fr.lamphi.api.UserResource;
 
+
+
 /**
  * Servlet implementation class Hello
  */
 @WebServlet(name = "inscriptionServlet", urlPatterns = { "/inscription" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
 public class Inscription extends HttpServlet {
-	HttpServletRequest req;
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 		String name=req.getParameter("Nom");
 		String surname=req.getParameter("Prenom");
 		String pseudo=req.getParameter("Pseudo");
