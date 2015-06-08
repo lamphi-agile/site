@@ -1,3 +1,4 @@
+<%@page import="fr.lamphi.api.*"%>
 <div class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -25,7 +26,7 @@
 					</ul></li>
 				<% } else { %>
 				<li><a href="Connexion?deconnect=1">Se déconnecter</a></li>
-				<li><a href="profil.jsp">Mon profile</a></li>
+				<li><a href="profil.jsp">Mon profile <img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(((User)session.getAttribute("user")).getEmail()));%>?s=17"/></a></li>
 				<% }%>
 			</ul>
 		</div>

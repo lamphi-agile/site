@@ -29,33 +29,18 @@
 		<div class="page-header" id="banner">
 			<div class="row">
 				<div class="col-lg-8 col-md-7 col-sm-6">
-					<h1>
-						<% out.print(user.getPseudo()); %>
-					</h1>
+					<h1>Profil<br><img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(user.getEmail()));%>?s=50"/>   <small><% out.print(user.getPseudo()); %></small></h1>
 				</div>
 			</div>
 		</div>
-
 		<!-- Projects Row -->
 		<ul>
-			<% 
-       		out.print("ID : "+user.getId());
-       		%><br>
-			<%
-       		out.print("Name : "+user.getName());
-       		%><br>
-			<%
-       		out.print("Surname : "+user.getSurname());
-       		%><br>
-			<%
-       		out.print("Email : "+user.getEmail());
-       		%><br>
-			<%
-       		out.print("Type  d'utilisateur : "+user.getStatus());
-       		%><br>
-			<%
-       		out.print("Sexe : "+user.getSex());	
-       		%>
+			<li><% out.print("ID : "+user.getId()); %></li>
+			<li><% out.print("Name : "+user.getName());%></li>
+			<li><% out.print("Surname : "+user.getSurname());%></li>
+			<li><% out.print("Email : "+user.getEmail());%></li>
+			<li><% out.print("Type  d'utilisateur : "+user.getStatus());%></li>
+			<li><% out.print("Sexe : "+user.getSex());%></li>
 		</ul>
 		<!-- /.row -->
 
