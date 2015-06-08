@@ -1,10 +1,7 @@
 <%@page import="fr.lamphi.api.LessonRessource"%>
 <%@page import="fr.lamphi.api.Lesson"%>
 <%@page import="java.util.List"%>
-<<<<<<< HEAD
 <%@page import="java.io.*"%>
-=======
->>>>>>> branch 'master' of https://github.com/lamphi-agile/site.git
 
 <%@ include file="include/header.jsp" %>
 
@@ -51,7 +48,7 @@
 										<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><% out.print(lesson.getTitle()); %></a>
 									</td>
 									<td>
-										<% out.print(lesson.getAuthor()); %>
+										<a href="profil.jsp"><% out.print(lesson.getAuthor()); %></a>
 									</td>
 									<td>
 										<% out.print(lesson.getCertified()); %>
