@@ -88,11 +88,10 @@
 			min: 0,
             max: 5,
             step: 0.5,
-            size: "sm",
-            symbol:"&#xf19d;",
-            glyphicon:false,
-            ratingClass:"rating-fa",
+            size: "xs",
 			defaultCaption:"{rating} sur 5",
+			clearCaption:"Non Evalué",
+			showClear:false,
 			starCaptions : {}
 		});
 		
