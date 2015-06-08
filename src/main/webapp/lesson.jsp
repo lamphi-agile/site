@@ -46,7 +46,6 @@
 				</div>
 				<input id="input-2d" class="rating" min="0" max="5" step="0.5" data-size="sm"
            		data-symbol="&#xf19d;" data-glyphicon="false" data-rating-class="rating-fa" data-default-caption="{rating} sur 5" data-star-captions="{}">
-           		
 			</div>
 		</div>  			
 
