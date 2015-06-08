@@ -8,7 +8,6 @@ import javax.ws.rs.core.Application;
 
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.skife.jdbi.v2.DBI;
-import org.sqlite.SQLiteDataSource;
 
 @ApplicationPath("/v1/")
 public class App extends Application {
@@ -17,6 +16,7 @@ public class App extends Application {
     	Set<Class<?>> s = new HashSet<Class<?>>();
     	s.add(UserResource.class);
     	s.add(LessonRessource.class);
+    	s.add(CommentairesRessource.class);
     	s.add(LoggingFilter.class);
     	s.add(UserDBResource.class);
     	return s;
@@ -27,5 +27,6 @@ public class App extends Application {
 		SQLiteDataSource ds = new SQLiteDataSource();
 		ds.setUrl("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"data.db");
 		dbi = new DBI(ds);
+		System.out.println("jdbi : "+"jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"data.db");
     }
 }
