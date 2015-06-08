@@ -1,7 +1,9 @@
 <%@page import="fr.lamphi.api.*"%>
 <%@page import="javax.ws.rs.WebApplicationException"%>
-<%@ include file="include/header.jsp" %>
 
+<%@ include file="include/header.jsp" %>
+    
+   
   <body>
 	<%@ include file="include/navbar.jsp" %>
     	
@@ -43,6 +45,9 @@
 					
 					</div>
 				</div>
+				<input id="input-2d" class="rating" min="0" max="5" step="0.5" data-size="sm"
+           		data-symbol="&#xf19d;" data-glyphicon="false" data-rating-class="rating-fa" data-default-caption="{rating} sur 5" data-star-captions="{}">
+           		
 			</div>
 		</div>  			
 
@@ -60,17 +65,18 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
-    
+    <script src="js/star-rating.js" type="text/javascript"></script>
+  
 	
-<script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
-<script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
+	<script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
+	<script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
+	
+	<script src="js/notation.js"></script>
 
     <script type="text/javascript">
     new Editor({
     	  element: document.getElementById('contenu')
-    	})
+    	});
     </script>
-
   </body>
 </html>
