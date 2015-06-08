@@ -22,7 +22,7 @@ public class AddLesson extends HttpServlet {
 
 
 		User user = (User)request.getSession().getAttribute("user");
-		Lesson lesson = new Lesson(request.getParameter("title"),  "",request.getParameter("contenu"), 1, user, ""+System.currentTimeMillis(), false);
+		Lesson lesson = new Lesson(0,request.getParameter("title"), request.getParameter("contenu"), user, ""+System.currentTimeMillis(),1, false,0);
 
 		
 		LessonRessource lr = new LessonRessource();

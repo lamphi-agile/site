@@ -55,7 +55,7 @@
 										</a>
 									</td>
 									<td>
-										<% out.print(lesson.getCertified()); %>
+										<% out.print(lesson.getNote()); %>
 									</td>
 								</tr>
 								<%} %>
