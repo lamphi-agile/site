@@ -8,6 +8,7 @@ import javax.ws.rs.core.Application;
 
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.skife.jdbi.v2.DBI;
+import org.sqlite.SQLiteDataSource;
 
 @ApplicationPath("/v1/")
 public class App extends Application {

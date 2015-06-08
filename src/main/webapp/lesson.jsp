@@ -4,7 +4,6 @@
 
 <%@ include file="include/header.jsp"%>
 
-
 <body>
 	<%@ include file="include/navbar.jsp"%>
 
