@@ -27,9 +27,11 @@ public class LessonDBRessource {
 			
 			Lesson newLesson = new Lesson(1, "Le C !", contenu, 1, "0000-00-00 00:00:00", 1, false, 2.5, 0);
 			Lesson newLesson2 = new Lesson(2, "Le Java !", contenu, 2, "0000-00-00 00:00:00", 1, false, 4.8, 0);
+			Lesson newLesson3 = new Lesson(2, "La révolution française", contenu, 2, "0000-00-00 00:00:00", 2, false, 4.8, 0);
 			
 			createLesson(newLesson);
 			createLesson(newLesson2);
+			createLesson(newLesson3);
 			
 		}
 		catch (Exception e) {
@@ -65,5 +67,11 @@ public class LessonDBRessource {
 	public List<Lesson> getLessons(
 			@DefaultValue("10") @QueryParam("limit") int limit) {
 		return dao.getLessons(limit);
+	}
+	
+	@GET
+	@Path("/category/{categoryId}")
+	public List<Lesson> getLessonsByCategory(@PathParam("categoryId") int categoryId) {
+		return dao.getLessonsByCategory(categoryId);
 	}
 }

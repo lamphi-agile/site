@@ -24,6 +24,11 @@ public class CategoryDBRessource {
 	public CategoryDBRessource () {
 		try {
 			dao.createCategoriesTable();
+			
+			Category category = new Category(0, "Informatique", "", 0);
+			Category category2 = new Category(0, "Histoire", "", 0);
+			createCategory(category);
+			createCategory(category2);
 		}
 		catch (Exception e) {
 		}

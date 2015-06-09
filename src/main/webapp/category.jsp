@@ -1,21 +1,41 @@
-<%@page import="fr.lamphi.api.category.CategoryResource"%>
-<%@page import="fr.lamphi.api.category.Category"%>
+<%@page import="fr.lamphi.api.category.*"%>
+<%@page import="fr.lamphi.api.lesson.*"%>
+<%@page import="fr.lamphi.api.user.*"%>
+<%@page import="fr.lamphi.api.*"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Random"%>
 <%@page import="java.io.*"%>
+<%@page import="javax.ws.rs.WebApplicationException"%>
 
-<%@ include file="include/header.jsp" %>
+<%@ include file="include/header.jsp"%>
 
-  <body>
-	<%@ include file="include/navbar.jsp" %>
-    
+<body>
+	<%@ include file="include/navbar.jsp"%>
 
- 	<!-- Page Content -->
-    <div class="container">
-    <!-- Page Header -->
-        <div class="page-header" id="banner">
+	<%
+		LessonDBRessource ressource = new LessonDBRessource();
+	
+		Category category = null;
+	
+		List<Lesson> lessons = null;
+		if (request.getParameter("id") != null) {
+			try {
+				category = new CategoryDBRessource().getCategory(Integer.parseInt(request.getParameter("id")));
+				lessons = ressource.getLessonsByCategory(Integer.parseInt(request.getParameter("id")));
+			} catch (WebApplicationException e) {
+				response.sendRedirect("404.jsp");
+			}
+		} else {
+			response.sendRedirect("index.jsp");
+		}
+	%>
+	<!-- Page Content -->
+	<div class="container">
+		<!-- Page Header -->
+		<div class="page-header" id="banner">
 			<div class="row">
-				<div class="col-lg-8 col-md-7 col-sm-6">
-					<h1>Les Catégories</h1>
+				<div class="col-md-8">
+					<h1>Liste des cours de la catégorie <% out.print(category.getName()); %></h1>
 				</div>
 			</div>
 		</div>
@@ -27,25 +47,52 @@
 			<div class="row">
 				<div class="col-lg-12">
 
+					<h2>Liste des Cours</h2>
 					<div class="bs-component">
 						<table class="table table-striped table-hover ">
 							<thead>
 								<tr>
-									<th>Categorie</th>									
+									<th>#</th>
+									<th>Titre</th>
+									<th>Auteur</th>
+									<th>Note</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-									List<Category> categories= new CategoryResource().getCategories(10);
-									for(Category category : categories) {
+									for (Lesson lesson : lessons) {
 								%>
-								<tr>		
+								<tr>
 									<td>
-										<a href="lesson.jsp?id=<%out.print(category.getId());%>"><% out.print(category.getName()); %></a>
-									</td>									
-									
+										<%
+											out.print(lesson.getId());
+										%>
+									</td>
+									<td><a href="lesson.jsp?id=<%out.print(lesson.getId());%>">
+											<%
+												out.print(lesson.getTitle());
+											%>
+									</a></td>
+									<td>
+										<%
+											User lessonUser = lesson.getAuthor();
+										%> <a href="profil.jsp?id=<%out.print(lessonUser.getId());%>">
+											<img
+											src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUser.getEmail()));%>?s=17" />
+											<%
+												out.print(lessonUser);
+											%>
+									</a>
+									</td>
+									<td>
+										<%
+											out.print(lesson.getNote());
+										%>
+									</td>
 								</tr>
-								<%} %>
+								<%
+									}
+								%>
 							</tbody>
 						</table>
 					</div>
@@ -54,19 +101,20 @@
 			</div>
 		</div>
 
-        <hr>
-		<%@ include file="include/footer.jsp" %>
-       
-    </div>
-    <!-- /.container -->
+		<hr>
+		<%@ include file="include/footer.jsp"%>
+
+	</div>
+	<!-- /.container -->
 
 
 
-    <!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
-  </body>
+</body>
 </html>
