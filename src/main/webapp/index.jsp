@@ -40,7 +40,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%List<Lesson> lessonsR = new LessonRessource().getlessons(10);
+								<%List<Lesson> lessonsR = new LessonDBRessource().getLessons(10);
 								Random rand = new Random();
 								
 								
@@ -85,7 +85,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%List<Lesson> lessons = new LessonRessource().getlessons(10);
+								<%List<Lesson> lessons = new LessonDBRessource().getLessons(10);
                   					for(Lesson lesson : lessons) {%>
 								<tr>
 									<td>
