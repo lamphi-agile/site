@@ -5,25 +5,35 @@ public class Lesson {
 	private String title;
 	private int category;
 	private String content;
-	private User author;
+	private int idAuthor;
 	private String creationDate;
-	private boolean certified;
 	private int id;
+	private int cptValide;
 	private double note;
+	private boolean certified;
 	
 	public Lesson(){}
 		
-	public Lesson(int id, String titre, String contenu, User auteur, String dateCreate, int category, boolean isValide, double note){
+	public Lesson(int id, String titre, String contenu, int idAuthor, String dateCreate, int category, boolean isValide, double note, int cptValide){
 		this.id=id;
 		this.title=titre;
 		this.category=category;		
-		this.author=auteur;
+		this.idAuthor=idAuthor;
 		this.creationDate=dateCreate;
 		this.certified=isValide;
 		this.content = contenu;
 		this.note = note;
+		this.setCptValide(cptValide);
 	}
 	
+	@Override
+	public String toString() {
+		return "Lesson [title=" + title + ", category=" + category
+				+ ", content=" + content + ", author=" + getAuthor()
+				+ ", creationDate=" + creationDate + ", certified=" + certified
+				+ ", id=" + id + ", note=" + note + "]";
+	}
+
 	public double getNote() {
 		return note;
 	}
@@ -45,7 +55,8 @@ public class Lesson {
 	}
 	
 	public User getAuthor(){
-		return author;
+		UserDBResource udb = new UserDBResource();
+		return udb.getUser(this.idAuthor);
 	}
 	
 	public String getCreationDate(){
@@ -69,10 +80,6 @@ public class Lesson {
 		this.id=id;
 	}
 	
-	public void setAuthor(User author){
-		this.author=author;
-	}
-	
 	public void setCreationDate(String creationDate){
 		this.creationDate=creationDate;
 	}
@@ -91,5 +98,21 @@ public class Lesson {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public int getIdAuthor() {
+		return idAuthor;
+	}
+
+	public void setIdAuthor(int idAuthor) {
+		this.idAuthor = idAuthor;
+	}
+	
+	public int getCptValide() {
+		return cptValide;
+	}
+
+	public void setCptValide(int cptValide) {
+		this.cptValide = cptValide;
 	}
 }

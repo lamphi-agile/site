@@ -33,39 +33,39 @@
 			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Nom</label>
 				<div class="col-sm-10">
-					<input type="text" name="name" placeholder="Nom" required>
+					<input class="form-control" type="text" name="name" placeholder="Nom" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Prenom</label>
 				<div class="col-sm-10">
-					<input type="text" name="surname" placeholder="Prenom" required>
+					<input class="form-control" type="text" name="surname" placeholder="Prenom" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Pseudo</label>
 				<div class="col-sm-10">
-					<input type="text" name="pseudo" placeholder="Pseudo" required>
+					<input class="form-control" type="text" name="pseudo" placeholder="Pseudo" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
-					<input type="mail" name="email" placeholder="Email" required>
+					<input class="form-control" type="email" name="email" placeholder="Email" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Mot de
 					passe</label>
 				<div class="col-sm-10">
-					<input type="password" name="password" placeholder="Mot de passe"
+					<input class="form-control" type="password" name="password" placeholder="Mot de passe"
 						required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Sexe </label>
 				<div class="col-sm-10">
-					<select name="sex" id="sex">
+					<select class="form-control" name="sex" id="sex">
 						<option value="Femme">Femme</option>
 						<option value="Homme">Homme</option>
 					</select>
@@ -74,7 +74,7 @@
 			<div class="form-group">
 				<label for="inputNom" class="col-sm-2 control-label">Statut ? </label>
 				<div class="col-sm-10">
-					<select name="status" id="status">
+					<select class="form-control" name="status" id="status">
 						<option value="ens">Enseignant</option>
 						<option value="etu">Etudiant</option>
 					</select>
