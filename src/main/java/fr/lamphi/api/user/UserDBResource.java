@@ -26,7 +26,6 @@ public class UserDBResource {
 			dao.insert("DUPONT", "Jean", "jean.dupont@gmail.com", "jeandupont", MD5Util.md5Hex("jeandupont"), "hom", "etu");
 		}
 		catch (Exception e) {
-			System.out.println("La table existe déjà !");
 		}
 	}
 	

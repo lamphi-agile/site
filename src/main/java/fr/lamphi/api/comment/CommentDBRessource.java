@@ -35,7 +35,6 @@ public class CommentDBRessource {
 			createComment(com4);
 		}
 		catch (Exception e) {
-			System.out.println("La table Comments existe déjà !");
 		}
 	}
 

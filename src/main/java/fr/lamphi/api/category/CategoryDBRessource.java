@@ -26,7 +26,6 @@ public class CategoryDBRessource {
 			dao.createCategoriesTable();
 		}
 		catch (Exception e) {
-			System.out.println("La table Category existe déjà !");
 		}
 	}
 
