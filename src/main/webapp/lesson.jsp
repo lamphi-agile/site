@@ -15,7 +15,7 @@
 	<%
 		LessonDBRessource ressource = new LessonDBRessource();
 		CommentDBRessource cr = new CommentDBRessource();
-
+		User currentUser = (User)session.getAttribute("user");
 		Lesson lesson = null;
 		List<Comment> comments = null;
 		if (request.getParameter("id") != null) {
@@ -28,7 +28,12 @@
 			}
 		} else {
 			response.sendRedirect("index.jsp");
-		}
+		}	
+		
+			
+			
+			
+		
 	%>
 
 	<!-- Page Content -->
@@ -39,18 +44,33 @@
 				<div class="col-lg-8 col-md-7 col-sm-6">
 					<h1>
 						<%
-							out.print(lesson.getTitle());
+							if(lesson.getCptValide() > 10) {%>
+								<i class="fa fa-certificate"></i>
+						<%	}
+							out.print(" "+lesson.getTitle());
 						%>
 						<small> <%
- 	out.print(lesson.getAuthor());
- %>
-						</small>						
-					</h1>					
+ 								out.print(lesson.getAuthor());
+ 						%>
+						</small>				
+					</h1>
+					<small>
+					<%
+					if(lesson.getCptValide() == 0) {
+						out.print("Ce cours n'a pas été certifié");
+					} else {
+						out.print("Ce cours a été certifié " + lesson.getCptValide() + " fois");
+					}
+					%>
+					</small>		
 				</div>
+				<% if(currentUser != null && currentUser.getStatus().equals("ens")) { %>
 				<div class="col-md-2 col-md-offset-2">
-					<p class="text-right"><a class="btn btn-success" style="margin-top:2em"><i class="fa fa-plus-square"></i>
-				certifié un cours</a></p>
+					<p class="text-right"><a class="btn btn-success" onmouseup="alert ('Vous venez de certifié ce cours')" style="margin-top:2em"><i class="fa fa-certificate"></i>
+				Certifié</a></p>
+				
 				</div>
+				<%} %>
 			</div>
 		</div>
 
@@ -110,6 +130,8 @@
 					}
 				%>
 			</div>
+			
+				
 		</div>
 		<%@ include file="include/footer.jsp"%>
 
@@ -156,7 +178,16 @@
 			console.log(value);
 			console.log(caption);
 		});
+		
 	</script>
+	<script type="text/javascript">	
+		function ajouter(){
+			lesson.setCptValue(lesson.getCptValue+1);
+		}
+	</script>
+	
+	
+	
 
 
 </body>

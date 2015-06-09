@@ -22,8 +22,8 @@ public class UserDBResource {
 	public UserDBResource () {
 		try {
 			dao.createUserTable();
-			dao.insert("DOE", "John", "john.doe@gmail.com", "johndoe", MD5Util.md5Hex("johndoe"), "hom", "ens");
-			dao.insert("DUPONT", "Jean", "jean.dupont@gmail.com", "jeandupont", MD5Util.md5Hex("jeandupont"), "hom", "etu");
+			dao.insert("DOE", "John", "john.doe@gmail.com", "johndoe", MD5Util.md5Hex("johndoe"), "hom", "etu");
+			dao.insert("DUPONT", "Jean", "jean.dupont@gmail.com", "jeandupont", MD5Util.md5Hex("jeandupont"), "hom", "ens");
 		}
 		catch (Exception e) {
 		}
