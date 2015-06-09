@@ -25,6 +25,8 @@
 					<ul class="dropdown-menu" aria-labelledby="themes">
 						<li><a href="Connexion?status=prof">En tant que professeur...</a></li>
 						<li><a href="Connexion?status=etu">En tant qu'étudiant...</a></li>
+						<li class="divider"></li>
+						<li><a href="register.jsp">Autre</a></li>
 					</ul></li>
 				<% } else { %>
 				<li><a href="Connexion?deconnect=1">Se déconnecter</a></li>

@@ -3,17 +3,16 @@
 	<%@ include file="include/navbar.jsp"%>
 	<!-- Page Content -->
 	<div class="container">
-		<!-- Page Header -->
 		<div class="page-header" id="banner">
 			<div class="row">
 				<div class="col-lg-8 col-md-7 col-sm-6">
-					<h1>Connexion</h1>
+					<h1>Mauvais login ou mot de passe</h1>
 				</div>
 			</div>
 		</div>
-		
 		<%@ include file="include/footer.jsp"%>
 	</div>
+	<!-- /.container -->
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

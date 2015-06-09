@@ -39,10 +39,19 @@ public class UserDBResource {
 	@GET
 	@Path("/{id}")
 	public User getUser(@PathParam("id") int id) {
-		System.out.println(id);
 		User out = dao.findById(id);
 		if (out == null) {
 			throw new WebApplicationException(404);
+		}
+		return out;
+	}
+	
+	@GET
+	@Path("/{username}/{password}")
+	public User getUser(@PathParam("username") String username, @PathParam("password") String password) throws WebApplicationException {
+		User out = dao.findByLoginPassword(username, password);
+		if (out == null) {
+			throw new WebApplicationException(300);
 		}
 		return out;
 	}

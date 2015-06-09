@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.WebApplicationException;
 
 import fr.lamphi.api.user.UserDBResource;
 
@@ -33,13 +34,23 @@ public class Connexion extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		String status = request.getParameter("status");
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");
 		boolean deconnect = request.getParameter("deconnect")==null?false:true;
 		if(status != null) {
 			if(status.equals("etu"))
 				session.setAttribute("user", new UserDBResource().getUser(1));
 			else if(status.equals("prof"))
 				session.setAttribute("user", new UserDBResource().getUser(2));
-		} else if(deconnect) {
+		} else if(login != null && password != null) {
+			UserDBResource userRessource = new UserDBResource();
+			try {
+				session.setAttribute("user", userRessource.getUser(login, password));
+			} catch (WebApplicationException e) {
+				response.sendRedirect("BadLoginOrPassword.jsp");
+				return;
+			}
+		} else if(deconnect){
 			session.invalidate();
 		}
 		response.sendRedirect("index.jsp");
