@@ -48,70 +48,10 @@
 			</div>
 		</div>
 
-		<!-- Tables
-      ================================================== -->
 		<div class="bs-docs-section">
 
 			<div class="row">
-				<div class="col-lg-12">
-
-					<h2>Ca vous intéresse ?</h2>
-					<div class="bs-component">
-						<table class="table table-striped table-hover ">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Titre</th>
-									<th>Auteur</th>
-									<th>Note</th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-									List<Lesson> lessonsR = new LessonDBRessource().getLessons(10);
-									Random rand = new Random();
-
-									Lesson lessonR = lessonsR.get((int) rand.nextInt(lessonsR.size()));
-								%>
-								<tr>
-									<td>
-										<%
-											out.print(lessonR.getId());
-										%>
-									</td>
-									
-									<td><a
-										href="lesson.jsp?id=<%out.print(lessonR.getId());%>">
-											<%
-												out.print(lessonR.getTitle());
-											%>
-									</a></td>
-									<td>
-										<%
-											User lessonUserR = lessonR.getAuthor();
-										%> <a
-										href="profil.jsp?id=<%out.print(lessonUserR.getId());%>">
-											<img
-											src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUserR.getEmail()));%>?s=17" />
-											<%
-												out.print(lessonUserR);
-											%>
-									</a>
-									</td>
-									<td>
-										<%
-											out.print(lessonR.getNote());
-										%>
-									</td>
-								</tr>
-
-							</tbody>
-						</table>
-					</div>
-
-
-
-
+				<div class="col-lg-8">
 
 					<h2>Liste des Cours</h2>
 					<div class="bs-component">
@@ -129,7 +69,7 @@
 								<%
 									List<Lesson> lessons = new LessonDBRessource().getLessons(10);
 									CategoryDBRessource cdbr = new CategoryDBRessource();
-									
+
 									for (Lesson lesson : lessons) {
 								%>
 								<tr>
@@ -145,19 +85,21 @@
 									</a></td>
 									<td>
 										<%
-											try{
-												out.print("<a href='category.jsp?id="+lesson.getCategory()+"'>"+cdbr.getCategory(lesson.getCategory()).getName()+"</a>");
-											}
-										catch(WebApplicationException e){
-											out.print("Aucune catégorie");
-										}
+											try {
+													out.print("<a href='category.jsp?id="
+															+ lesson.getCategory() + "'>"
+															+ cdbr.getCategory(lesson.getCategory()).getName()
+															+ "</a>");
+												} catch (WebApplicationException e) {
+													out.print("Aucune catégorie");
+												}
 										%>
 									</td>
 									<td>
 										<%
 											User lessonUser = lesson.getAuthor();
-										%> <a
-										href="profil.jsp?id=<%out.print(lessonUser.getId());%>"> <img
+										%> <a href="profil.jsp?id=<%out.print(lessonUser.getId());%>">
+											<img
 											src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUser.getEmail()));%>?s=17" />
 											<%
 												out.print(lessonUser);
@@ -177,6 +119,33 @@
 						</table>
 					</div>
 					<!-- /example -->
+				</div>
+				<div class="col-lg-4">
+
+					<h2>Ca vous intéresse ?</h2>
+					<div class="bs-component">
+						<%
+							List<Lesson> lessonsR = new LessonDBRessource().getLessons(10);
+							Random rand = new Random();
+
+							Lesson lessonR = lessonsR.get((int) rand.nextInt(lessonsR.size()));
+						%>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="thumbnail">
+									<img src="http://lorempicsum.com/futurama/350/200/1">
+									<div class="caption">
+										<h3><% out.print(lessonR.getTitle()); %></h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae dolor at magna dignissim convallis. Aenean eget felis nisl. Nullam maximus, erat eu luctus eleifend, orci ligula laoreet nulla, a volutpat augue neque at velit. Donec sit amet nullam. </p>
+										<p>
+											<a href="lesson.jsp?id=<%out.print(lessonR.getId());%>" class="btn btn-primary" role="button">Voir le cours</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

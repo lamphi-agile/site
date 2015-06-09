@@ -30,10 +30,6 @@
 			response.sendRedirect("index.jsp");
 		}	
 		
-			
-			
-			
-		
 	%>
 
 	<!-- Page Content -->
