@@ -43,8 +43,12 @@
 						<small> <%
  	out.print(lesson.getAuthor());
  %>
-						</small>
-					</h1>
+						</small>						
+					</h1>					
+				</div>
+				<div class="col-md-2 col-md-offset-2">
+					<p class="text-right"><a class="btn btn-success" style="margin-top:2em"><i class="fa fa-plus-square"></i>
+				certifié un cours</a></p>
 				</div>
 			</div>
 		</div>
