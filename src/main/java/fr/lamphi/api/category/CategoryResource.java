@@ -27,52 +27,27 @@ public class CategoryResource {
 private static Map<Integer, Category> categories = new HashMap<>();
 
 	static{
-		Category category= new Category("Maths");
-		categories.put(1, category);
-		Category category2 = new Category("Anglais");
-		categories.put(2, category2);
+		Category category= new Category(1,"Maths","",0);
+		categories.put(category.getId(), category);
+		Category category2 = new Category(1,"Anglais","",0);
+		categories.put(category2.getId(), category2);
 	}
 
 	@POST
-	public Category createDivisons (Category lessonDiv) {
+	public Category createCategory(Category category) {
 		int id = categories.size();
-		lessonDiv.setId(id+1);
-		categories.put(lessonDiv.getId(), lessonDiv);
-		return lessonDiv;
-	}
-	
-	
-	
-	@DELETE
-	@Path("{id}")
-	public Response deleteLessonDivision(@PathParam("id") Integer id) {
-		if (categories.containsKey(id)) {
-			return Response.accepted().status(Status.ACCEPTED).build();
-		}
-	    return Response.accepted().status(Status.NOT_FOUND).build();
+		category.setId(id+1);
+		categories.put(category.getId(), category);
+		return category;
 	}
 	
 	protected Category find(int id) {
 		return categories.get(id);
 	}
-	
-	@PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-	public Response updateLessonDivision(@PathParam("id") int id, Category lessonDiv) {
-		Category oldLessonDiv = find(id);
-		System.out.println("Should update user with id: "+id
-				+" ("+oldLessonDiv+") to " +lessonDiv);
-		if (lessonDiv == null) {
-			throw new WebApplicationException(404);
-		}
-		oldLessonDiv.setCategory(lessonDiv.getCategory());
-		return Response.status(200).entity(oldLessonDiv).build();
-	}
 
 	@GET
 	@Path("/{id}")
-	public Category getLessonDivision(@PathParam("id") int id ) {
+	public Category getCategory(@PathParam("id") int id ) {
 		Category out = find(id);
 		if (out == null) {
 			throw new WebApplicationException(404);
@@ -81,7 +56,7 @@ private static Map<Integer, Category> categories = new HashMap<>();
 	}
 	
 	@GET
-	public List<Category> getListLessonDiv(@DefaultValue("10") @QueryParam("limit") int limit) {
+	public List<Category> getCategories(@DefaultValue("10") @QueryParam("limit") int limit) {
 		return new ArrayList<Category>(categories.values());
 	}
 

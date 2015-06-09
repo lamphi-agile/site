@@ -11,22 +11,22 @@
 
 
 	<%
-			LessonRessource ressource = new LessonRessource();
-			CommentRessource cr = new CommentRessource();
-			
-			Lesson lesson = null;
-			List<Comment> comments = null;
-			if (request.getParameter("id") != null) {
-		try {
-			lesson = ressource.getlesson(Integer.parseInt(request
-			.getParameter("id")));
-			comments = cr.getComments(lesson.getId());
-		} catch (WebApplicationException e) {
-			response.sendRedirect("404.jsp");
-		}
-			} else {
-		response.sendRedirect("index.jsp");
+		LessonDBRessource ressource = new LessonDBRessource();
+		CommentDBRessource cr = new CommentDBRessource();
+
+		Lesson lesson = null;
+		List<Comment> comments = null;
+		if (request.getParameter("id") != null) {
+			try {
+				lesson = ressource.getLesson(Integer.parseInt(request
+						.getParameter("id")));
+				comments = cr.getComments(lesson.getId());
+			} catch (WebApplicationException e) {
+				response.sendRedirect("404.jsp");
 			}
+		} else {
+			response.sendRedirect("index.jsp");
+		}
 	%>
 
 	<!-- Page Content -->
@@ -85,20 +85,23 @@
 				</form>
 
 				<%
-					for(Comment comment : comments){ 
-									User commentUser = new UserResource().getUser(comment.getIdUser());
-							
-								
-								out.println("<div class='media'>");
-								out.println(" <div class='media-left'>");
-								out.println("  <img class='media-object' src='http://www.gravatar.com/avatar/"+MD5Util.md5Hex(commentUser.getEmail())+";?s=64'/>");
-								 out.println(" </div>");
-								  out.println("<div class='media-body'>");
-								   out.println("<h4 class='media-heading'>"+commentUser.getName()+" "+commentUser.getSurname()+"</h4>");
-								    out.print(comment.getContenu());
-								  out.println("</div>");
-								out.println("</div>");
-								 }
+					for (Comment comment : comments) {
+						User commentUser = new UserResource().getUser(comment
+								.getIdUser());
+
+						out.println("<div class='media'>");
+						out.println(" <div class='media-left'>");
+						out.println("  <img class='media-object' src='http://www.gravatar.com/avatar/"
+								+ MD5Util.md5Hex(commentUser.getEmail()) + ";?s=64'/>");
+						out.println(" </div>");
+						out.println("<div class='media-body'>");
+						out.println("<h4 class='media-heading'>"
+								+ commentUser.getName() + " "
+								+ commentUser.getSurname() + "</h4>");
+						out.print(comment.getContenu());
+						out.println("</div>");
+						out.println("</div>");
+					}
 				%>
 			</div>
 		</div>
