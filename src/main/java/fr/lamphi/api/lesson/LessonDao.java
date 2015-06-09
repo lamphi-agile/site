@@ -21,6 +21,10 @@ public interface LessonDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
 	Lesson findById(@Bind("id") int id);
 	
+	@SqlQuery("select * from lessons where title like :keywords")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+	List<Lesson> search(@Bind("keywords") String keywords);
+	
 	@SqlQuery("select * from lessons limit :limit")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<Lesson> getLessons(@Bind("limit") int limit);

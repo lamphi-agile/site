@@ -6,6 +6,9 @@
 		<!-- Page Header -->
 		<div class="page-header" id="banner">
 			<div class="row">
+				<%if(request.getAttribute("alert") != null) {%>
+					<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <%out.print(request.getAttribute("alert")); %></div>
+				<%} %>
 				<div class="col-lg-6 col-md-6 col-sm-6">
 					<h1>Connexion</h1>
 					<form method='post' action='Connexion'>
@@ -13,7 +16,7 @@
 							<label for="login" class="col-sm-4 control-label">Login </label>
 							<div class="col-sm-8">
 								<input class="form-control" type="text" name="login"
-									placeholder="Login" required>
+									value="<%out.print(request.getParameter("login")!=null?request.getParameter("login"):""); %>" placeholder="Login" required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -38,28 +41,28 @@
 							<label for="inputNom" class="col-sm-4 control-label">Nom</label>
 							<div class="col-sm-8">
 								<input class="form-control" type="text" name="name"
-									placeholder="Nom" required>
+									value="<%out.print(request.getParameter("name")!=null?request.getParameter("name"):""); %>" placeholder="Nom" required>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputNom" class="col-sm-4 control-label">Prénom</label>
 							<div class="col-sm-8">
 								<input class="form-control" type="text" name="surname"
-									placeholder="Prénom" required>
+									value="<%out.print(request.getParameter("surname")!=null?request.getParameter("surname"):""); %>" placeholder="Prénom" required>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputNom" class="col-sm-4 control-label">Pseudo</label>
+							<label for="inputNom" class="col-sm-4 control-label">Login</label>
 							<div class="col-sm-8">
 								<input class="form-control" type="text" name="pseudo"
-									placeholder="Pseudo" required>
+									value="<%out.print(request.getParameter("pseudo")!=null?request.getParameter("pseudo"):""); %>" placeholder="Pseudo" required>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputNom" class="col-sm-4 control-label">Email</label>
 							<div class="col-sm-8">
 								<input class="form-control" type="email" name="email"
-									placeholder="Email" required>
+									value="<%out.print(request.getParameter("email")!=null?request.getParameter("email"):""); %>" placeholder="Email" required>
 							</div>
 						</div>
 						<div class="form-group">
