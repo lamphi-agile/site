@@ -47,7 +47,8 @@ public class Connexion extends HttpServlet {
 			try {
 				session.setAttribute("user", userRessource.getUser(login, password));
 			} catch (WebApplicationException e) {
-				response.sendRedirect("BadLoginOrPassword.jsp");
+				request.setAttribute("alert", "Mauvais login ou mot de passe !");
+				request.getRequestDispatcher("register.jsp").forward(request, response);
 				return;
 			}
 		} else if(deconnect){
