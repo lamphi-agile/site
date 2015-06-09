@@ -51,7 +51,7 @@
 		<div class="bs-docs-section">
 
 			<div class="row">
-				<div class="col-lg-8">
+				<div class="col-sm-8">
 
 					<h2>Liste des Cours</h2>
 					<div class="bs-component">
@@ -120,7 +120,7 @@
 					</div>
 					<!-- /example -->
 				</div>
-				<div class="col-lg-4">
+				<div class="col-sm-4">
 
 					<h2>Ca vous intéresse ?</h2>
 					<div class="bs-component">
