@@ -1,4 +1,5 @@
 <%@page import="java.util.List"%>
+<%@page import="fr.lamphi.api.*"%>
 <%@page import="fr.lamphi.api.lesson.*"%>
 <%@page import="fr.lamphi.api.comment.Comment"%>
 <%@page import="fr.lamphi.api.comment.CommentDBRessource"%>
@@ -73,24 +74,20 @@
 			</div>
 		</div>
 
-		<!-- Tables
-      ================================================== -->
 		<div class="bs-docs-section">
 
 			<div class="row">
 				<div class="col-lg-12">
 					<div id="contenu">
-						<%
-							out.print(lesson.getContent());
-						%>
+<% out.print(lesson.getContent()); %>
 					</div>
 				</div>
 
 				<input id="inputRating" class="rating" data-symbol="&#xf19d;"
 					data-glyphicon="false" data-rating-class="rating-fa"> <a
-					href=" http://www.facebook.com" target="_blank"> <img
+					href="http://www.facebook.com/share.php?u=http://localhost:8080/lesson.jsp?id=<% out.print(lesson.getId()); %>" target="_blank"> <img
 					src="img/facebook.png" alt="facebook" width="50px" heigth="50px" />
-				</a> <a href=" http://www.twitter.com" target="_blank"> <img
+				</a> <a href="https://twitter.com/intent/tweet?text=<% out.print("Je viens de lire un super cours sur @lamphi http://localhost:8080/lesson.jsp?id="+lesson.getId()); %>" target="_blank"> <img
 					src="img/twitter.png" alt="twitter" width="50px" heigth="50px" />
 				</a> <a href=" http://www.google.com/intl/fr/+/learnmore/"
 					target="_blank"> <img src="img/gmail.png" alt="googleplus"
@@ -157,6 +154,12 @@
 	<script type="text/javascript"
 		src="http://lab.lepture.com/editor/marked.js"></script>
 
+
+	<script type="text/javascript">
+		document.getElementById('contenu').innerHTML =
+	      marked(document.getElementById('contenu').textContent);
+	</script>
+	
 	<script type="text/javascript">
 		$("#inputRating").rating({
 			min : 0,
@@ -169,7 +172,7 @@
 			starCaptions : {}
 		});
 
-		$('#inputRating').rating('update', 2.6);
+		$('#inputRating').rating('update', <% out.print(lesson.getNote()); %>);
 
 		$('#inputRating').on('rating.change', function(event, value, caption) {
 			console.log(value);

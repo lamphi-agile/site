@@ -5,6 +5,13 @@
 <%@page import="java.io.*"%>
 
 <%@ include file="include/header.jsp"%>
+<%
+	String keywords = request.getParameter("keywords");
+	if (keywords == null) {
+		response.sendRedirect("index.jsp");
+	}
+	List<Lesson> lessons = new LessonDBRessource().search(keywords);
+%>
 
 <body>
 	<%@ include file="include/navbar.jsp"%>
@@ -16,31 +23,38 @@
 		<div class="page-header" id="banner">
 			<div class="row">
 				<%
-					if (request.getAttribute("alert") != null) {
+					if (lessons.size() == 0) {
 				%>
-				<div class="alert alert-danger" role="alert">
+				<div class="alert alert-warning" role="alert">
 					<button type="button" class="close" data-dismiss="alert"
 						aria-label="Fermer">
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<span class="glyphicon glyphicon-exclamation-sign"
 						aria-hidden="true"></span>
-					<%
-						out.print(request.getAttribute("alert"));
-					%>
+					Aucun résultat n'a était trouvé
 				</div>
+				<%
+					} else { %>
+				<div class="alert alert-info" role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Fermer">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="glyphicon glyphicon-exclamation-sign"
+						aria-hidden="true"></span>
+					<%out.print(lessons.size()); %> résultat(s) trouvé(s)
+				</div>		
 				<%
 					}
 				%>
 				<div class="col-md-8">
-					<h1>Les cours</h1>
-				</div>
-				<div class="col-md-2 col-md-offset-2">
-					<p class="text-right">
-						<a href="addlesson.jsp" class="btn btn-success"
-							style="margin-top: 1.7em"><i class="fa fa-plus-square"></i>
-							Ajouter un cours</a>
-					</p>
+					<h1>
+						Recherche de cours <small>"<%
+						out.print(keywords);
+					%>"
+						</small>
+					</h1>
 				</div>
 			</div>
 		</div>
@@ -48,11 +62,8 @@
 		<!-- Tables
       ================================================== -->
 		<div class="bs-docs-section">
-
 			<div class="row">
 				<div class="col-lg-12">
-
-					<h2>Ca vous intéresse ?</h2>
 					<div class="bs-component">
 						<table class="table table-striped table-hover ">
 							<thead>
@@ -65,64 +76,6 @@
 							</thead>
 							<tbody>
 								<%
-									List<Lesson> lessonsR = new LessonDBRessource().getLessons(10);
-									Random rand = new Random();
-
-									Lesson lessonR = lessonsR.get((int) rand.nextInt(lessonsR.size()));
-								%>
-								<tr>
-									<td>
-										<%
-											out.print(lessonR.getId());
-										%>
-									</td>
-									<td><a
-										href="lesson.jsp?id=<%out.print(lessonR.getId());%>">
-											<%
-												out.print(lessonR.getTitle());
-											%>
-									</a></td>
-									<td>
-										<%
-											User lessonUserR = lessonR.getAuthor();
-										%> <a
-										href="profil.jsp?id=<%out.print(lessonUserR.getId());%>">
-											<img
-											src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUserR.getEmail()));%>?s=17" />
-											<%
-												out.print(lessonUserR);
-											%>
-									</a>
-									</td>
-									<td>
-										<%
-											out.print(lessonR.getNote());
-										%>
-									</td>
-								</tr>
-
-							</tbody>
-						</table>
-					</div>
-
-
-
-
-
-					<h2>Liste des Cours</h2>
-					<div class="bs-component">
-						<table class="table table-striped table-hover ">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Titre</th>
-									<th>Auteur</th>
-									<th>Note</th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-									List<Lesson> lessons = new LessonDBRessource().getLessons(10);
 									for (Lesson lesson : lessons) {
 								%>
 								<tr>
@@ -139,8 +92,8 @@
 									<td>
 										<%
 											User lessonUser = lesson.getAuthor();
-										%> <a
-										href="profil.jsp?id=<%out.print(lessonUser.getId());%>"> <img
+										%> <a href="profil.jsp?id=<%out.print(lessonUser.getId());%>">
+											<img
 											src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUser.getEmail()));%>?s=17" />
 											<%
 												out.print(lessonUser);

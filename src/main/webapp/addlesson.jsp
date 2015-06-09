@@ -1,4 +1,9 @@
-
+<%if(session.getAttribute("user") == null) {
+	request.setAttribute("alert", "Vous devez être authentifié pour pouvoir ajouter un cours");
+	request.getRequestDispatcher("index.jsp").forward(request, response);
+	return;
+}
+	%>
 <%@ include file="include/header.jsp" %>
 
   <body>
