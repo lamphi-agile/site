@@ -1,4 +1,4 @@
-package fr.lamphi.api;
+package fr.lamphi.api.lesson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +19,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+
+import fr.lamphi.api.user.UserResource;
 
 @Path("/lesson")
 @Produces(MediaType.APPLICATION_JSON)

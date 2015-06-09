@@ -1,4 +1,4 @@
-package fr.lamphi.api;
+package fr.lamphi.api.category;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,23 +20,24 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+
 @Path("/lessondivision")
 @Produces(MediaType.APPLICATION_JSON)
-public class LessonDivisionRessource {
-private static Map<Integer, LessonDivision> lessonsDiv = new HashMap<>();
+public class CategoryResource {
+private static Map<Integer, Category> categories = new HashMap<>();
 
 	static{
-		LessonDivision lessonDiv= new LessonDivision("Maths");
-		lessonsDiv.put(1, lessonDiv);
-		LessonDivision lessonDiv2 = new LessonDivision("Anglais");
-		lessonsDiv.put(2, lessonDiv2);
+		Category category= new Category("Maths");
+		categories.put(1, category);
+		Category category2 = new Category("Anglais");
+		categories.put(2, category2);
 	}
 
 	@POST
-	public LessonDivision createDivisons (LessonDivision lessonDiv) {
-		int id = lessonsDiv.size();
+	public Category createDivisons (Category lessonDiv) {
+		int id = categories.size();
 		lessonDiv.setId(id+1);
-		lessonsDiv.put(lessonDiv.getId(), lessonDiv);
+		categories.put(lessonDiv.getId(), lessonDiv);
 		return lessonDiv;
 	}
 	
@@ -45,21 +46,21 @@ private static Map<Integer, LessonDivision> lessonsDiv = new HashMap<>();
 	@DELETE
 	@Path("{id}")
 	public Response deleteLessonDivision(@PathParam("id") Integer id) {
-		if (lessonsDiv.containsKey(id)) {
+		if (categories.containsKey(id)) {
 			return Response.accepted().status(Status.ACCEPTED).build();
 		}
 	    return Response.accepted().status(Status.NOT_FOUND).build();
 	}
 	
-	protected LessonDivision find(int id) {
-		return lessonsDiv.get(id);
+	protected Category find(int id) {
+		return categories.get(id);
 	}
 	
 	@PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-	public Response updateLessonDivision(@PathParam("id") int id, LessonDivision lessonDiv) {
-		LessonDivision oldLessonDiv = find(id);
+	public Response updateLessonDivision(@PathParam("id") int id, Category lessonDiv) {
+		Category oldLessonDiv = find(id);
 		System.out.println("Should update user with id: "+id
 				+" ("+oldLessonDiv+") to " +lessonDiv);
 		if (lessonDiv == null) {
@@ -71,8 +72,8 @@ private static Map<Integer, LessonDivision> lessonsDiv = new HashMap<>();
 
 	@GET
 	@Path("/{id}")
-	public LessonDivision getLessonDivision(@PathParam("id") int id ) {
-		LessonDivision out = find(id);
+	public Category getLessonDivision(@PathParam("id") int id ) {
+		Category out = find(id);
 		if (out == null) {
 			throw new WebApplicationException(404);
 		}
@@ -80,8 +81,8 @@ private static Map<Integer, LessonDivision> lessonsDiv = new HashMap<>();
 	}
 	
 	@GET
-	public List<LessonDivision> getListLessonDiv(@DefaultValue("10") @QueryParam("limit") int limit) {
-		return new ArrayList<LessonDivision>(lessonsDiv.values());
+	public List<Category> getListLessonDiv(@DefaultValue("10") @QueryParam("limit") int limit) {
+		return new ArrayList<Category>(categories.values());
 	}
 
 }

@@ -1,4 +1,4 @@
-package fr.lamphi.api;
+package fr.lamphi.api.comment;
 
 import java.util.List;
 
@@ -9,7 +9,10 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
-public interface LessonDao {
+import fr.lamphi.api.lesson.Lesson;
+
+/** TODO **/
+public interface CommentDao {
 	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, idauthor int, createddate datetime, category int, foreign key(idauthor) references users(id))")
 	void createLessonsTable();
 

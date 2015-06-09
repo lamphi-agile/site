@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.lamphi.api.Lesson;
-import fr.lamphi.api.LessonDBRessource;
-import fr.lamphi.api.LessonRessource;
-import fr.lamphi.api.User;
+import fr.lamphi.api.lesson.Lesson;
+import fr.lamphi.api.lesson.LessonDBRessource;
+import fr.lamphi.api.lesson.LessonRessource;
+import fr.lamphi.api.user.User;
 
 @WebServlet(name = "addLessonServlet", urlPatterns = { "/AddLesson" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
 public class AddLesson extends HttpServlet {

@@ -1,5 +1,5 @@
-<%@page import="fr.lamphi.api.LessonDivisionRessource"%>
-<%@page import="fr.lamphi.api.LessonDivision"%>
+<%@page import="fr.lamphi.api.category.CategoryResource"%>
+<%@page import="fr.lamphi.api.category.Category"%>
 <%@page import="java.util.List"%>
 <%@page import="java.io.*"%>
 
@@ -35,8 +35,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%List<LessonDivision> lessondiv= new LessonDivisionRessource().getListLessonDiv(10);
-                  					for(LessonDivision lesson : lessondiv) {%>
+								<%
+									List<Category> lessondiv= new CategoryResource().getListLessonDiv(10);
+														                  					for(Category lesson : lessondiv) {
+								%>
 								<tr>									
 									</td>
 									<td>

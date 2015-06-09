@@ -1,4 +1,4 @@
-package fr.lamphi.api;
+package fr.lamphi.api.comment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,14 +18,14 @@ import javax.ws.rs.core.Response.Status;
 
 @Path("/comment")
 @Produces(MediaType.APPLICATION_JSON)
-public class CommentairesRessource {
-private static Map<Integer, Commentaires> commentaires = new HashMap<>();
+public class CommentRessource {
+private static Map<Integer, Comment> commentaires = new HashMap<>();
 
 	static{
-		Commentaires com1= new Commentaires(1, 1, 1,"Commentaire de la mort","2015-06-08");
-		Commentaires com2= new Commentaires(2, 1, 2,"Commentaire de la mort 2","2015-06-08");
-		Commentaires com3= new Commentaires(3, 2, 1,"Commentaire de la mort 3","2015-06-08");
-		Commentaires com4= new Commentaires(4, 2, 2,"Commentaire de la mort 4","2015-06-08");
+		Comment com1= new Comment(1, 1, 1,"Commentaire de la mort","2015-06-08");
+		Comment com2= new Comment(2, 1, 2,"Commentaire de la mort 2","2015-06-08");
+		Comment com3= new Comment(3, 2, 1,"Commentaire de la mort 3","2015-06-08");
+		Comment com4= new Comment(4, 2, 2,"Commentaire de la mort 4","2015-06-08");
 
 		commentaires.put(com1.getId(), com1);
 		commentaires.put(com2.getId(), com2);
@@ -35,7 +35,7 @@ private static Map<Integer, Commentaires> commentaires = new HashMap<>();
 	}
 	
 	@POST
-	public Commentaires createCom(Commentaires com) {
+	public Comment createCom(Comment com) {
 		int id = commentaires.size();
 		com.setId(id+1);
 		commentaires.put(com.getId(), com);
@@ -52,10 +52,10 @@ private static Map<Integer, Commentaires> commentaires = new HashMap<>();
 	} 
 	 
 	
-	protected List<Commentaires> getCommentsByLesson(int id){
-		ArrayList<Commentaires> list = new ArrayList<Commentaires>();
+	protected List<Comment> getCommentsByLesson(int id){
+		ArrayList<Comment> list = new ArrayList<Comment>();
 		
-		for(Entry<Integer, Commentaires> comments : commentaires.entrySet())
+		for(Entry<Integer, Comment> comments : commentaires.entrySet())
 			if(comments.getValue().getIdLesson() == id)
 				list.add(comments.getValue());
 		
@@ -64,7 +64,7 @@ private static Map<Integer, Commentaires> commentaires = new HashMap<>();
 	
 	@GET
 	@Path("/{idLesson}")
-	public List<Commentaires> getComments(@PathParam("idLesson") int id ) {
+	public List<Comment> getComments(@PathParam("idLesson") int id ) {
 		return getCommentsByLesson(id);
 	}
 } 

@@ -1,4 +1,7 @@
-package fr.lamphi.api;
+package fr.lamphi.api.lesson;
+
+import fr.lamphi.api.user.User;
+import fr.lamphi.api.user.UserDBResource;
 
 public class Lesson {
 

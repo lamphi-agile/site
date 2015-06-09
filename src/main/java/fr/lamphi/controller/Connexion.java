@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.lamphi.api.User;
-import fr.lamphi.api.UserResource;
+import fr.lamphi.api.user.User;
+import fr.lamphi.api.user.UserResource;
 
 /**
  * Servlet implementation class Connexion

@@ -1,5 +1,5 @@
-<%@page import="fr.lamphi.api.LessonRessource"%>
-<%@page import="fr.lamphi.api.Lesson"%>
+<%@page import="fr.lamphi.api.lesson.*"%>
+<%@page import="fr.lamphi.api.user.*"%>
 <%@page import="java.util.List"%>
 <%@page import="java.io.*"%>
 

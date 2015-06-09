@@ -1,4 +1,4 @@
-package fr.lamphi.api;
+package fr.lamphi.api.user;
 
 import java.util.List;
 
