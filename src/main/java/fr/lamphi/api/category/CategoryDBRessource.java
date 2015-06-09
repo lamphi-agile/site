@@ -32,7 +32,7 @@ public class CategoryDBRessource {
 
 	@POST
 	public Category createCategory(Category category) {
-		int id = dao.insert(category.getId(), category.getName(),
+		int id = dao.insert(category.getName(),
 				category.getImage(), category.getParentId());
 		category.setId(id);
 		return category;

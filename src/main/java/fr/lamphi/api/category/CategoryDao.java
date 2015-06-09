@@ -14,7 +14,7 @@ import fr.lamphi.api.lesson.Lesson;
 /** TODO **/
 public interface CategoryDao {
 	@SqlUpdate("create table categories(id integer primary key autoincrement, name text, image text, parentid int, foreign key(parentid) references categories(id))")
-	void createLessonsTable();
+	void createCategoriesTable();
 
 	@SqlUpdate("insert into categories (name, image, parentid) values (:name, :image, :parentid)")
 	@GetGeneratedKeys
@@ -26,7 +26,7 @@ public interface CategoryDao {
 	
 	@SqlQuery("select * from categories limit :limit")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	List<Category> getCategory(@Bind("limit") int limit);
+	List<Category> getCategories(@Bind("limit") int limit);
 
 	@SqlUpdate("drop table if exists categories")
 	void dropCategoryTable(); 

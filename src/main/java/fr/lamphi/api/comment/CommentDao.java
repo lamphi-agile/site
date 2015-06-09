@@ -18,8 +18,12 @@ public interface CommentDao {
 
 	@SqlUpdate("insert into comments (userid, message, lessonid, createddate) values (:userid, :message, :lessonid, date('now'))")
 	@GetGeneratedKeys
-	int insert(@Bind("userid") String userid, @Bind("message") String message, @Bind("lessonid") int lessonid);
+	int insert(@Bind("userid") int userid, @Bind("lessonid") int lessonid, @Bind("message") String message);
 
+	@SqlQuery("select * from comments where lessonid = :idLesson ORDER BY createddate DESC")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+	List<Comment> getCommentsByLesson(@Bind("idLesson") int idLesson);
+	
 	@SqlQuery("select * from comments where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	Comment findById(@Bind("id") int id);

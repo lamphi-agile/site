@@ -98,7 +98,7 @@
 						out.println("<h4 class='media-heading'>"
 								+ commentUser.getName() + " "
 								+ commentUser.getSurname() + "</h4>");
-						out.print(comment.getContenu());
+						out.print(comment.getMessage());
 						out.println("</div>");
 						out.println("</div>");
 					}
