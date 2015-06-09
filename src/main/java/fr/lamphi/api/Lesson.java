@@ -8,13 +8,14 @@ public class Lesson {
 	private User author;
 	private int idauthor;
 	private String creationDate;
-	private boolean certified;
 	private int id;
+	private int cptValide;
 	private double note;
+	private boolean certified;
 	
 	public Lesson(){}
 		
-	public Lesson(int id, String titre, String contenu, User auteur, String dateCreate, int category, boolean isValide, double note){
+	public Lesson(int id, String titre, String contenu, User auteur, String dateCreate, int category, boolean isValide, double note, int cptValide){
 		this.id=id;
 		this.title=titre;
 		this.category=category;		
@@ -23,6 +24,7 @@ public class Lesson {
 		this.certified=isValide;
 		this.content = contenu;
 		this.note = note;
+		this.setCptValide(cptValide);
 	}
 	
 	@Override
@@ -108,5 +110,12 @@ public class Lesson {
 
 	public void setIdauthor(int idauthor) {
 		this.idauthor = idauthor;
+	}
+	public int getCptValide() {
+		return cptValide;
+	}
+
+	public void setCptValide(int cptValide) {
+		this.cptValide = cptValide;
 	}
 }
