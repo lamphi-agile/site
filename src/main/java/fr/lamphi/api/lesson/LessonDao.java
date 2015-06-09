@@ -33,4 +33,8 @@ public interface LessonDao {
 	void dropLessonsTable(); 
 	
 	void close();
+
+	@SqlQuery("select * from lessons where category = :categoryId")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+	List<Lesson> getLessonsByCategory(@Bind("categoryId") int categoryId);
 }

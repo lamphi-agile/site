@@ -1,8 +1,11 @@
+<%@page import="fr.lamphi.api.category.CategoryDBRessource"%>
 <%@page import="fr.lamphi.api.lesson.*"%>
 <%@page import="fr.lamphi.api.user.*"%>
+<%@page import="fr.lamphi.api.*"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.io.*"%>
+<%@page import="javax.ws.rs.WebApplicationException"%>
 
 <%@ include file="include/header.jsp"%>
 
@@ -76,6 +79,7 @@
 											out.print(lessonR.getId());
 										%>
 									</td>
+									
 									<td><a
 										href="lesson.jsp?id=<%out.print(lessonR.getId());%>">
 											<%
@@ -116,6 +120,7 @@
 								<tr>
 									<th>#</th>
 									<th>Titre</th>
+									<th>Catégorie</th>
 									<th>Auteur</th>
 									<th>Note</th>
 								</tr>
@@ -123,6 +128,8 @@
 							<tbody>
 								<%
 									List<Lesson> lessons = new LessonDBRessource().getLessons(10);
+									CategoryDBRessource cdbr = new CategoryDBRessource();
+									
 									for (Lesson lesson : lessons) {
 								%>
 								<tr>
@@ -136,6 +143,16 @@
 												out.print(lesson.getTitle());
 											%>
 									</a></td>
+									<td>
+										<%
+											try{
+												out.print("<a href='category.jsp?id="+lesson.getCategory()+"'>"+cdbr.getCategory(lesson.getCategory()).getName()+"</a>");
+											}
+										catch(WebApplicationException e){
+											out.print("Aucune catégorie");
+										}
+										%>
+									</td>
 									<td>
 										<%
 											User lessonUser = lesson.getAuthor();
