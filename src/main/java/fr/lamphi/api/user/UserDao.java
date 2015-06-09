@@ -17,7 +17,7 @@ public interface UserDao {
 	@GetGeneratedKeys
 	int insert(@Bind("name") String name, @Bind("surname") String surname, @Bind("email") String email, @Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("sex") String sex, @Bind("status") String status);
 
-	@SqlQuery("select * from users where id = :id")
+	@SqlQuery("select * from users where id = :id limit 1")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	User findById(@Bind("id") int id);
 	

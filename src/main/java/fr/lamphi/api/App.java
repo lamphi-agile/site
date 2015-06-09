@@ -10,6 +10,7 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.skife.jdbi.v2.DBI;
 import org.sqlite.SQLiteDataSource;
 
+import fr.lamphi.api.comment.CommentDBRessource;
 import fr.lamphi.api.comment.CommentRessource;
 import fr.lamphi.api.lesson.LessonDBRessource;
 import fr.lamphi.api.lesson.LessonRessource;
@@ -27,6 +28,7 @@ public class App extends Application {
     	s.add(LoggingFilter.class);
     	s.add(UserDBResource.class);
     	s.add(LessonDBRessource.class);
+    	s.add(CommentDBRessource.class);
     	return s;
     }
     

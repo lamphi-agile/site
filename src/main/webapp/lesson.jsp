@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="fr.lamphi.api.lesson.*"%>
-<%@page import="fr.lamphi.api.comment.*"%>
+<%@page import="fr.lamphi.api.comment.Comment"%>
+<%@page import="fr.lamphi.api.comment.CommentDBRessource"%>
 <%@page import="fr.lamphi.api.user.*"%>
 <%@page import="javax.ws.rs.WebApplicationException"%>
 
@@ -61,24 +62,23 @@
 					</div>
 				</div>
 
-				<input id="inputRating" class="rating" data-symbol="&#xf19d;" data-glyphicon="false" data-rating-class="rating-fa">
-				
-				<a href=" http://www.facebook.com" target="_blank">
-					<img src="img/facebook.png"  alt="facebook" width = "50px" heigth = "50px"/>
-				</a> 
-				<a href=" http://www.twitter.com" target="_blank">
-					<img src="img/twitter.png"  alt="twitter" width = "50px" heigth = "50px"/>
-				</a> 
-				<a href=" http://www.google.com/intl/fr/+/learnmore/" target="_blank">
-					<img src="img/gmail.png"  alt="googleplus" width = "50px" heigth = "50px"/>
-				</a> 
-				<a href=" http://www.linkedin.com" target="_blank">
-					<img src="img/linkedin.png"  alt="linkedin" width = "50px" heigth = "50px"/>
-				</a> 
+				<input id="inputRating" class="rating" data-symbol="&#xf19d;"
+					data-glyphicon="false" data-rating-class="rating-fa"> <a
+					href=" http://www.facebook.com" target="_blank"> <img
+					src="img/facebook.png" alt="facebook" width="50px" heigth="50px" />
+				</a> <a href=" http://www.twitter.com" target="_blank"> <img
+					src="img/twitter.png" alt="twitter" width="50px" heigth="50px" />
+				</a> <a href=" http://www.google.com/intl/fr/+/learnmore/"
+					target="_blank"> <img src="img/gmail.png" alt="googleplus"
+					width="50px" heigth="50px" />
+				</a> <a href=" http://www.linkedin.com" target="_blank"> <img
+					src="img/linkedin.png" alt="linkedin" width="50px" heigth="50px" />
+				</a>
 				<hr>
 
 				<form action="AddComment" method="post">
-					<input type="hidden" name="idLesson" value="<%out.print(lesson.getId());%>">
+					<input type="hidden" name="idLesson"
+						value="<%out.print(lesson.getId());%>">
 					<textarea name="comment" class="form-control" rows="3"
 						style="resize: none;"></textarea>
 					<button class="btn btn-primary" type="submit">Ajouter</button>
@@ -86,9 +86,9 @@
 
 				<%
 					for (Comment comment : comments) {
-						User commentUser = new UserResource().getUser(comment
-								.getIdUser());
-
+						try{
+						User commentUser = new UserDBResource().getUser(comment.getUserid());
+						
 						out.println("<div class='media'>");
 						out.println(" <div class='media-left'>");
 						out.println("  <img class='media-object' src='http://www.gravatar.com/avatar/"
@@ -101,6 +101,10 @@
 						out.print(comment.getMessage());
 						out.println("</div>");
 						out.println("</div>");
+						}
+						catch(WebApplicationException e){
+							out.println("<div class='alert alert-warning' role='alert'>L'utilisateur est introuvable. Le commentaire n'est donc pas affiché.</div>");
+						}
 					}
 				%>
 			</div>
@@ -128,13 +132,13 @@
 
 	<script type="text/javascript">
 		$("#inputRating").rating({
-			min: 0,
-            max: 5,
-            step: 0.5,
-            size: "xs",
-			defaultCaption:"{rating} sur 5",
-			clearCaption:"Non Evalué",
-			showClear:false,
+			min : 0,
+			max : 5,
+			step : 0.5,
+			size : "xs",
+			defaultCaption : "{rating} sur 5",
+			clearCaption : "Non Evalué",
+			showClear : false,
 			starCaptions : {}
 		});
 

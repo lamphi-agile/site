@@ -56,7 +56,7 @@ private static Map<Integer, Comment> commentaires = new HashMap<>();
 		ArrayList<Comment> list = new ArrayList<Comment>();
 		
 		for(Entry<Integer, Comment> comments : commentaires.entrySet())
-			if(comments.getValue().getIdLesson() == id)
+			if(comments.getValue().getLessonid() == id)
 				list.add(comments.getValue());
 		
 		return list;

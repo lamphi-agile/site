@@ -1,4 +1,4 @@
-<%@page import="fr.lamphi.api.*"%>
+<%@page import="fr.lamphi.api.user.*"%>
 <%@page import="javax.ws.rs.WebApplicationException"%>
 <%@ include file="include/header.jsp"%>
 
@@ -8,7 +8,7 @@
 
 	<% 
     	User user = null; 
-    	UserResource resource = new UserResource();
+    	UserDBResource resource = new UserDBResource();
     	
     	if( request.getParameter("id") != null ){
     		try{

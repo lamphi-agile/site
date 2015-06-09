@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.lamphi.api.comment.Comment;
-import fr.lamphi.api.comment.CommentRessource;
+import fr.lamphi.api.comment.CommentDBRessource;
 import fr.lamphi.api.user.User;
 
 @WebServlet(name = "addComment", urlPatterns = { "/AddComment" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
@@ -31,8 +31,8 @@ public class AddComment extends HttpServlet {
 
 
 		
-		CommentRessource cr = new CommentRessource();
-		cr.createCom(newComments);
+		CommentDBRessource cr = new CommentDBRessource();
+		cr.createComment(newComments);
 		
 		response.sendRedirect("lesson.jsp?id="+request.getParameter("idLesson"));
 	}

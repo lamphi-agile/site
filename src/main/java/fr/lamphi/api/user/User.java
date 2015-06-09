@@ -1,15 +1,15 @@
 package fr.lamphi.api.user;
 
 public class User {
-	private String pseudo;
+	private int id;
 	private String name;
 	private String surname;
+	private String pseudo;
 	private String email;
 	private String status;
 	private String password;
 	private String sex;
 	
-	private int id = 0;
 
 	public User(int id, String name, String surname, String status, String pseudo, String email, String password, String sex) {
 		this.id = id;
@@ -23,7 +23,6 @@ public class User {
 	}
 
 	public User() {
-		
 	}
 	
 	public int getId() {

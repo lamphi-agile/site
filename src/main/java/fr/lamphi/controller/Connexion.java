@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.lamphi.api.user.User;
-import fr.lamphi.api.user.UserResource;
+import fr.lamphi.api.user.UserDBResource;
 
 /**
  * Servlet implementation class Connexion
@@ -37,9 +36,9 @@ public class Connexion extends HttpServlet {
 		boolean deconnect = request.getParameter("deconnect")==null?false:true;
 		if(status != null) {
 			if(status.equals("etu"))
-				session.setAttribute("user", new UserResource().getUser(1));
+				session.setAttribute("user", new UserDBResource().getUser(1));
 			else if(status.equals("prof"))
-				session.setAttribute("user", new UserResource().getUser(2));
+				session.setAttribute("user", new UserDBResource().getUser(2));
 		} else if(deconnect) {
 			session.invalidate();
 		}

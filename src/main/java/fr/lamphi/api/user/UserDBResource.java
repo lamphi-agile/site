@@ -39,6 +39,7 @@ public class UserDBResource {
 	@GET
 	@Path("/{id}")
 	public User getUser(@PathParam("id") int id) {
+		System.out.println(id);
 		User out = dao.findById(id);
 		if (out == null) {
 			throw new WebApplicationException(404);

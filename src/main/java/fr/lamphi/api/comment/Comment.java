@@ -2,19 +2,19 @@ package fr.lamphi.api.comment;
 
 public class Comment {
 	private int id;
-	private int idUser;
+	private int userid;
+	private int lessonid;
 	private String message;
 	private String date;
-	private int idLesson;
 	
 	public Comment(){}
 	
-	public Comment(int id, int idUser, int idLesson, String message, String date ){
-		this.setIdUser(idUser);
-		this.setDate(date);
-		this.setMessage(message);
+	public Comment(int id, int idUser, int idLesson, String message, String date){
 		this.setId(id);
-		this.setIdLesson(idLesson);
+		this.setUserid(idUser);
+		this.setLessonid(idLesson);
+		this.setMessage(message);
+		this.setDate(date);
 	}
 	
 	public int getId() {
@@ -23,22 +23,6 @@ public class Comment {
 	
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
-
-	public int getIdLesson() {
-		return idLesson;
-	}
-
-	public void setIdLesson(int idLesson) {
-		this.idLesson = idLesson;
 	}
 
 	public String getDate() {
@@ -55,6 +39,22 @@ public class Comment {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+	public int getLessonid() {
+		return lessonid;
+	}
+
+	public void setLessonid(int lessonid) {
+		this.lessonid = lessonid;
 	}
 	
 }
