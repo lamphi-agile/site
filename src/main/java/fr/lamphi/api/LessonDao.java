@@ -10,12 +10,12 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface LessonDao {
-	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, author int, createddate datetime, category int, foreign key(author) references users(id))")
+	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, idauthor int, createddate datetime, category int, foreign key(idauthor) references users(id))")
 	void createLessonsTable();
 
-	@SqlUpdate("insert into lessons (title, content, author, createddate, category) values (:title, :content, :author, date('now'), :category)")
+	@SqlUpdate("insert into lessons (title, content, idauthor, createddate, category) values (:title, :content, :idauthor, date('now'), :category)")
 	@GetGeneratedKeys
-	int insert(@Bind("title") String title, @Bind("content") String content, @Bind("author") int idUser, @Bind("category") int idCategoryord);
+	int insert(@Bind("title") String title, @Bind("content") String content, @Bind("idauthor") int idUser, @Bind("category") int idCategoryord);
 
 	@SqlQuery("select * from lessons where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)

@@ -6,6 +6,7 @@ public class Lesson {
 	private int category;
 	private String content;
 	private User author;
+	private int idauthor;
 	private String creationDate;
 	private boolean certified;
 	private int id;
@@ -100,5 +101,12 @@ public class Lesson {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
+	public int getIdauthor() {
+		return idauthor;
+	}
+
+	public void setIdauthor(int idauthor) {
+		this.idauthor = idauthor;
+	}
 }
