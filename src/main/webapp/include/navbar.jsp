@@ -28,7 +28,7 @@
 					</ul></li>
 				<% } else { %>
 				<li><a href="Connexion?deconnect=1">Se déconnecter</a></li>
-				<li><a href="profil.jsp">Mon profil <img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(((User)session.getAttribute("user")).getEmail()));%>?s=17"/></a></li>
+				<li><a href="profil.jsp"><%out.print(((User)session.getAttribute("user")).getPseudo()); %> <img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(((User)session.getAttribute("user")).getEmail()));%>?s=17"/></a></li>
 				<% }%>
 			</ul>
 		</div>
