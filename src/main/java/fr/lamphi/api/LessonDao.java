@@ -9,6 +9,8 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
+import fr.lamphi.api.lesson.Lesson;
+
 public interface LessonDao {
 	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, idauthor int, cptvalide int default 0, createddate datetime, category int, foreign key(idauthor) references users(id))")
 	void createLessonsTable();
