@@ -86,7 +86,7 @@
 
 				<%
 					for (Comment comment : comments) {
-						User commentUser = new UserResource().getUser(comment
+						User commentUser = new UserDBResource().getUser(comment
 								.getIdUser());
 
 						out.println("<div class='media'>");
