@@ -13,23 +13,23 @@ import fr.lamphi.api.lesson.Lesson;
 
 /** TODO **/
 public interface CategoryDao {
-	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, idauthor int, createddate datetime, category int, foreign key(idauthor) references users(id))")
+	@SqlUpdate("create table categories(id integer primary key autoincrement, name text, image text, parentid int, foreign key(parentid) references categories(id))")
 	void createLessonsTable();
 
-	@SqlUpdate("insert into lessons (title, content, idauthor, createddate, category) values (:title, :content, :idauthor, date('now'), :category)")
+	@SqlUpdate("insert into categories (name, image, parentid) values (:name, :image, :parentid)")
 	@GetGeneratedKeys
-	int insert(@Bind("title") String title, @Bind("content") String content, @Bind("idauthor") int idUser, @Bind("category") int idCategoryord);
+	int insert(@Bind("name") String name, @Bind("image") String image, @Bind("parentid") int idparent);
 
-	@SqlQuery("select * from lessons where id = :id")
+	@SqlQuery("select * from categories where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	Lesson findById(@Bind("id") int id);
+	Category findById(@Bind("id") int id);
 	
-	@SqlQuery("select * from lessons limit :limit")
+	@SqlQuery("select * from categories limit :limit")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	List<Lesson> getLessons(@Bind("limit") int limit);
+	List<Category> getCategory(@Bind("limit") int limit);
 
-	@SqlUpdate("drop table if exists lessons")
-	void dropLessonsTable(); 
+	@SqlUpdate("drop table if exists categories")
+	void dropCategoryTable(); 
 	
 	void close();
 }
