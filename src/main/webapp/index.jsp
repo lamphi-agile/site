@@ -15,8 +15,12 @@
     <!-- Page Header -->
         <div class="page-header" id="banner">
 			<div class="row">
-				<div class="col-lg-8 col-md-7 col-sm-6">
+				<div class="col-md-8">
 					<h1>Les cours</h1>
+				</div>
+				<div class="col-md-2 col-md-offset-2">
+					<p class="text-right"><a href="addLesson.jsp" class="btn btn-success" style="margin-top:2em"><i class="fa fa-plus-square"></i>
+				 Ajouter un cours</a></p>
 				</div>
 			</div>
 		</div>

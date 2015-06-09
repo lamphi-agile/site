@@ -36,13 +36,12 @@
 							</thead>
 							<tbody>
 								<%
-									List<Category> lessondiv= new CategoryResource().getListLessonDiv(10);
-														                  					for(Category lesson : lessondiv) {
+									List<Category> categories= new CategoryResource().getCategories(10);
+									for(Category category : categories) {
 								%>
-								<tr>									
-									</td>
+								<tr>		
 									<td>
-										<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><% out.print(lesson.getCategory()); %></a>
+										<a href="lesson.jsp?id=<%out.print(category.getId());%>"><% out.print(category.getName()); %></a>
 									</td>									
 									
 								</tr>
