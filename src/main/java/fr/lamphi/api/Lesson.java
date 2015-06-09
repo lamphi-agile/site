@@ -4,34 +4,35 @@ public class Lesson {
 
 	private String title;
 	private String contenu;
-	private String creationDate;
 	private int category;
+	private String content;
+	private User author;
+	private String creationDate;
 	private int id;
 	private int cptValide;
 	private double note;
 	private boolean certified;
-	private User author;
 	
 	public Lesson(){}
 		
-	public Lesson(int id, String titre, String contenu, User auteur, String dateCreate, int category, boolean isValide, double note, int cptValide){
+	public Lesson(int id, String titre, String contenu, User auteur, String dateCreate, int category, boolean isValide, double note){
 		this.id=id;
 		this.title=titre;
 		this.category=category;		
 		this.author=auteur;
 		this.creationDate=dateCreate;
 		this.certified=isValide;
-		this.contenu = contenu;
+		this.content = contenu;
 		this.note = note;
 		this.cptValide=cptValide;
 	}
 	
-	public int getCptValide() {
-		return cptValide;
-	}
-
-	public void setCptValide(int cptValide) {
-		this.cptValide = cptValide;
+	@Override
+	public String toString() {
+		return "Lesson [title=" + title + ", category=" + category
+				+ ", content=" + content + ", author=" + author
+				+ ", creationDate=" + creationDate + ", certified=" + certified
+				+ ", id=" + id + ", note=" + note + "]";
 	}
 
 	public double getNote() {
@@ -95,11 +96,12 @@ public class Lesson {
 		this.certified=certified;
 	}
 
-	public String getContenu() {
-		return contenu;
+	public String getContent() {
+		return content;
 	}
 
-	public void setContenu(String contenu) {
-		this.contenu = contenu;
+	public void setContent(String content) {
+		this.content = content;
 	}
+	
 }
