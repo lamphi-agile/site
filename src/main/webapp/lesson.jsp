@@ -86,9 +86,15 @@
 
 				<%
 					for (Comment comment : comments) {
+<<<<<<< HEAD
 						try{
 						User commentUser = new UserDBResource().getUser(comment.getUserid());
 						
+=======
+						User commentUser = new UserDBResource().getUser(comment
+								.getIdUser());
+
+>>>>>>> 4a96f9e3f56dec8b9059d63d560ec56b2b6b8fd9
 						out.println("<div class='media'>");
 						out.println(" <div class='media-left'>");
 						out.println("  <img class='media-object' src='http://www.gravatar.com/avatar/"
