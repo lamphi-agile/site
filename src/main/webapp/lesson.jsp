@@ -54,7 +54,7 @@
 				<div class="col-lg-12">
 					<div id="contenu">
 						<%
-							out.print(lesson.getContenu());
+							out.print(lesson.getContent());
 						%>
 					</div>
 				</div>

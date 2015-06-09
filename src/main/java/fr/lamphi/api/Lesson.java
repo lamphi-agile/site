@@ -3,7 +3,6 @@ package fr.lamphi.api;
 public class Lesson {
 
 	private String title;
-	private String contenu;
 	private int category;
 	private String content;
 	private User author;
@@ -15,7 +14,7 @@ public class Lesson {
 	
 	public Lesson(){}
 		
-	public Lesson(int id, String titre, String contenu, User auteur, String dateCreate, int category, boolean isValide, double note){
+	public Lesson(int id, String titre, String contenu, User auteur, String dateCreate, int category, boolean isValide, double note, int cptValide){
 		this.id=id;
 		this.title=titre;
 		this.category=category;		
@@ -24,7 +23,7 @@ public class Lesson {
 		this.certified=isValide;
 		this.content = contenu;
 		this.note = note;
-		this.cptValide=cptValide;
+		this.setCptValide(cptValide);
 	}
 	
 	@Override
@@ -102,6 +101,14 @@ public class Lesson {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public int getCptValide() {
+		return cptValide;
+	}
+
+	public void setCptValide(int cptValide) {
+		this.cptValide = cptValide;
 	}
 	
 }
