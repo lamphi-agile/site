@@ -1,3 +1,4 @@
+<%@page import="fr.lamphi.api.certification.CertficationDBRessource"%>
 <%@page import="java.util.List"%>
 <%@page import="fr.lamphi.api.*"%>
 <%@page import="fr.lamphi.api.lesson.*"%>
@@ -15,6 +16,7 @@
 	<%
 		LessonDBRessource ressource = new LessonDBRessource();
 		CommentDBRessource cr = new CommentDBRessource();
+		CertficationDBRessource cdbressource = new CertficationDBRessource();
 		User currentUser = (User)session.getAttribute("user");
 		Lesson lesson = null;
 		List<Comment> comments = null;
@@ -29,7 +31,9 @@
 		} else {
 			response.sendRedirect("index.jsp");
 		}	
-		
+		if(request.getParameter("certifiate") != null) {
+			cdbressource.certifiate((User)session.getAttribute("user"), lesson);
+		}
 	%>
 
 	<!-- Page Content -->
@@ -40,7 +44,8 @@
 				<div class="col-lg-8 col-md-7 col-sm-6">
 					<h1>
 						<%
-							if(lesson.getCptValide() > 10) {%>
+						int nbcertifications = cdbressource.getNbCertfications(lesson.getId());
+							if(nbcertifications > 1) {%>
 								<i class="fa fa-certificate"></i>
 						<%	}
 							out.print(" "+lesson.getTitle());
@@ -52,17 +57,17 @@
 					</h1>
 					<small>
 					<%
-					if(lesson.getCptValide() == 0) {
+					if(nbcertifications == 0) {
 						out.print("Ce cours n'a pas été certifié");
 					} else {
-						out.print("Ce cours a été certifié " + lesson.getCptValide() + " fois");
+						out.print("Ce cours a été certifié " + nbcertifications+ " fois");
 					}
 					%>
 					</small>		
 				</div>
 				<% if(currentUser != null && currentUser.getStatus().equals("ens")) { %>
 				<div class="col-md-2 col-md-offset-2">
-					<p class="text-right"><a class="btn btn-success" onmouseup="alert ('Vous venez de certifié ce cours')" style="margin-top:2em"><i class="fa fa-certificate"></i>
+					<p class="text-right"><a class="btn btn-success" href="lesson.jsp?id=<%out.print(request.getParameter("id"));%>&certifiate=1" style="margin-top:2em"><i class="fa fa-certificate"></i>
 				Certifié</a></p>
 				
 				</div>
