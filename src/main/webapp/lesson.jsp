@@ -1,4 +1,5 @@
 <%@page import="java.util.List"%>
+<%@page import="fr.lamphi.api.*"%>
 <%@page import="fr.lamphi.api.lesson.*"%>
 <%@page import="fr.lamphi.api.comment.Comment"%>
 <%@page import="fr.lamphi.api.comment.CommentDBRessource"%>

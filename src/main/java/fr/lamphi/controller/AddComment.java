@@ -25,7 +25,7 @@ public class AddComment extends HttpServlet {
 		User user = (User)request.getSession().getAttribute("user");
 		
 		if(user == null)
-			response.sendRedirect("connexion.jsp");
+			response.sendRedirect("register.jsp");
 		
 		Comment newComments = new Comment(0, user.getId(), Integer.parseInt(request.getParameter("idLesson")), request.getParameter("comment"), new Date(System.currentTimeMillis()).toString());
 

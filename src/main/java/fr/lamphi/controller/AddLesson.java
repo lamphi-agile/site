@@ -23,6 +23,10 @@ public class AddLesson extends HttpServlet {
 
 
         User user = (User)request.getSession().getAttribute("user");
+        
+        if(user == null)
+			response.sendRedirect("register.jsp");
+        
         Lesson lesson = new Lesson(0,request.getParameter("title"), request.getParameter("contenu"), user.getId(), ""+System.currentTimeMillis(),1, false,0,0);
 
 
