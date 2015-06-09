@@ -4,7 +4,7 @@ public class Lesson {
 
 	private String title;
 	private int category;
-	private String contenu;
+	private String content;
 	private User author;
 	private String creationDate;
 	private boolean certified;
@@ -20,7 +20,7 @@ public class Lesson {
 		this.author=auteur;
 		this.creationDate=dateCreate;
 		this.certified=isValide;
-		this.contenu = contenu;
+		this.content = contenu;
 		this.note = note;
 	}
 	
@@ -85,11 +85,11 @@ public class Lesson {
 		this.certified=certified;
 	}
 
-	public String getContenu() {
-		return contenu;
+	public String getContent() {
+		return content;
 	}
 
-	public void setContenu(String contenu) {
-		this.contenu = contenu;
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
