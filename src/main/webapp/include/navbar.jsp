@@ -13,9 +13,9 @@
 			</button>
 		</div>
 		<div class="navbar-collapse collapse" id="navbar-main">
-				<form class="navbar-form navbar-left form-inline" role="search">
+				<form class="navbar-form navbar-left form-inline" role="search" method="post" action="searchlesson.jsp">
 				  <div class="input-group">
-				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Recherche">
+				      <input type="text" name="keywords" class="form-control" placeholder="Recherche">
 				      <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
 				    </div>
 				</form>
