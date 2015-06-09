@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.lamphi.api.Lesson;
+import fr.lamphi.api.LessonDBRessource;
 import fr.lamphi.api.LessonRessource;
 import fr.lamphi.api.User;
 
@@ -25,8 +26,8 @@ public class AddLesson extends HttpServlet {
         Lesson lesson = new Lesson(0,request.getParameter("title"), request.getParameter("contenu"), user, ""+System.currentTimeMillis(),1, false,0);
 
 
-       
-        LessonRessource lr = new LessonRessource();
+        System.out.println(lesson);
+        LessonDBRessource lr = new LessonDBRessource();
         lr.createLesson(lesson);
        
         response.sendRedirect("index.jsp");

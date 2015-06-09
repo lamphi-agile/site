@@ -21,7 +21,7 @@ public class LessonDBRessource {
 			dao.createLessonsTable();
 		}
 		catch (Exception e) {
-			System.out.println("La table existe déjà !");
+			System.out.println("La table LESSONS existe déjà !");
 		}
 	}
 	

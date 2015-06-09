@@ -24,6 +24,14 @@ public class Lesson {
 		this.note = note;
 	}
 	
+	@Override
+	public String toString() {
+		return "Lesson [title=" + title + ", category=" + category
+				+ ", content=" + content + ", author=" + author
+				+ ", creationDate=" + creationDate + ", certified=" + certified
+				+ ", id=" + id + ", note=" + note + "]";
+	}
+
 	public double getNote() {
 		return note;
 	}
@@ -92,4 +100,5 @@ public class Lesson {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 }
