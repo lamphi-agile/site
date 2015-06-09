@@ -14,7 +14,7 @@
 	<%
 		LessonDBRessource ressource = new LessonDBRessource();
 		CommentDBRessource cr = new CommentDBRessource();
-
+		UserDBResource user = new UserDBResource ();
 		Lesson lesson = null;
 		List<Comment> comments = null;
 		if (request.getParameter("id") != null) {
@@ -27,7 +27,12 @@
 			}
 		} else {
 			response.sendRedirect("index.jsp");
-		}
+		}	
+		
+			
+			
+			
+		
 	%>
 
 	<!-- Page Content -->
@@ -41,14 +46,23 @@
 							out.print(lesson.getTitle());
 						%>
 						<small> <%
- 	out.print(lesson.getAuthor());
- %>
-						</small>						
-					</h1>					
+ 								out.print(lesson.getAuthor());
+ 						%>
+						</small>
+													
+					</h1>	
+					<small> <% if(lesson.getCptValide()> 0) {
+ 									out.print("Ce cours est certifié valide par " +lesson.getCptValide() + " enseingant(s)");
+						}else {
+							out.println("Ce cours n'est pas certifié");
+						}
+ 								%>
+						</small>				
 				</div>
 				<div class="col-md-2 col-md-offset-2">
-					<p class="text-right"><a class="btn btn-success" style="margin-top:2em"><i class="fa fa-plus-square"></i>
+					<p class="text-right"><a class="btn btn-success" onmouseup="alert ('Vous venez de certifié ce cours')" style="margin-top:2em"><i class="fa fa-plus-square"></i>
 				certifié un cours</a></p>
+				
 				</div>
 			</div>
 		</div>
