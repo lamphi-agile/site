@@ -13,23 +13,23 @@ import fr.lamphi.api.lesson.Lesson;
 
 /** TODO **/
 public interface CommentDao {
-	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, idauthor int, createddate datetime, category int, foreign key(idauthor) references users(id))")
-	void createLessonsTable();
+	@SqlUpdate("create table comments(id integer primary key autoincrement, userid int, message text, lessonid int, createddate datetime, foreign key(lessonid) references lessons(id), foreign key(userid) references users(id))")
+	void createCommentsTable();
 
-	@SqlUpdate("insert into lessons (title, content, idauthor, createddate, category) values (:title, :content, :idauthor, date('now'), :category)")
+	@SqlUpdate("insert into comments (userid, message, lessonid, createddate) values (:userid, :message, :lessonid, date('now'))")
 	@GetGeneratedKeys
-	int insert(@Bind("title") String title, @Bind("content") String content, @Bind("idauthor") int idUser, @Bind("category") int idCategoryord);
+	int insert(@Bind("userid") String userid, @Bind("message") String message, @Bind("lessonid") int lessonid);
 
-	@SqlQuery("select * from lessons where id = :id")
+	@SqlQuery("select * from comments where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	Lesson findById(@Bind("id") int id);
+	Comment findById(@Bind("id") int id);
 	
-	@SqlQuery("select * from lessons limit :limit")
+	@SqlQuery("select * from comments limit :limit")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	List<Lesson> getLessons(@Bind("limit") int limit);
+	List<Comment> getComments(@Bind("limit") int limit);
 
-	@SqlUpdate("drop table if exists lessons")
-	void dropLessonsTable(); 
+	@SqlUpdate("drop table if exists comments")
+	void dropCommentsTable(); 
 	
 	void close();
 }
