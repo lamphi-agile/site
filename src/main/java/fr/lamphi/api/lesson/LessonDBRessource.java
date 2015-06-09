@@ -56,9 +56,9 @@ public class LessonDBRessource {
 	}
 	
 	@GET
-	@Path("/{keywords}")
-	public List<Lesson> getLesson(@PathParam("keywords") String keywords) {
-		List<Lesson> out = dao.search(keywords);
+	@Path("/search/{keyword}")
+	public List<Lesson> search(@PathParam("keyword") String keyword) {
+		List<Lesson> out = dao.search(keyword);
 		return out;
 	}
 
