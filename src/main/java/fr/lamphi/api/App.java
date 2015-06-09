@@ -10,6 +10,12 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.skife.jdbi.v2.DBI;
 import org.sqlite.SQLiteDataSource;
 
+import fr.lamphi.api.comment.CommentRessource;
+import fr.lamphi.api.lesson.LessonDBRessource;
+import fr.lamphi.api.lesson.LessonRessource;
+import fr.lamphi.api.user.UserDBResource;
+import fr.lamphi.api.user.UserResource;
+
 @ApplicationPath("/v1/")
 public class App extends Application {
     @Override
@@ -17,7 +23,7 @@ public class App extends Application {
     	Set<Class<?>> s = new HashSet<Class<?>>();
     	s.add(UserResource.class);
     	s.add(LessonRessource.class);
-    	s.add(CommentairesRessource.class);
+    	s.add(CommentRessource.class);
     	s.add(LoggingFilter.class);
     	s.add(UserDBResource.class);
     	s.add(LessonDBRessource.class);

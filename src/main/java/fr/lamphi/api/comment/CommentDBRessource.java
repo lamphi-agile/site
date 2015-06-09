@@ -1,4 +1,4 @@
-package fr.lamphi.api;
+package fr.lamphi.api.comment;
 
 import java.util.List;
 
@@ -12,22 +12,30 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
+import fr.lamphi.api.App;
+import fr.lamphi.api.lesson.Lesson;
+
+/** TODO **/
 @Path("/lessondb")
 @Produces(MediaType.APPLICATION_JSON)
-public class LessonDBRessource {
-	private static LessonDao dao = App.dbi.open(LessonDao.class);
-	public LessonDBRessource () {
+public class CommentDBRessource {
+	private static CommentDao dao = App.dbi.open(CommentDao.class);
+
+	public CommentDBRessource () {
 		try {
 			dao.createLessonsTable();
+			
+			
 		}
 		catch (Exception e) {
 			System.out.println("La table LESSONS existe déjà !");
 		}
 	}
-	
+
 	@POST
 	public Lesson createLesson(Lesson lesson) {
-		int id = dao.insert(lesson.getTitle(), lesson.getContent(), lesson.getAuthor().getId(), lesson.getCategory());
+		int id = dao.insert(lesson.getTitle(), lesson.getContent(),
+				lesson.getIdAuthor(), lesson.getCategory());
 		lesson.setId(id);
 		return lesson;
 	}
@@ -43,7 +51,8 @@ public class LessonDBRessource {
 	}
 
 	@GET
-	public List<Lesson> getLessons(@DefaultValue("10") @QueryParam("limit") int limit) {
+	public List<Lesson> getLessons(
+			@DefaultValue("10") @QueryParam("limit") int limit) {
 		return dao.getLessons(limit);
 	}
 }

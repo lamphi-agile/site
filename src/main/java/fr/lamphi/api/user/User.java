@@ -1,4 +1,4 @@
-package fr.lamphi.api;
+package fr.lamphi.api.user;
 
 public class User {
 	private String pseudo;
@@ -41,10 +41,6 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	/*public boolean equals(Object u) {
-		return name.equals(((User) u).name);
-	}*/
 
 	public String toString() {
 		return surname + " " + name;

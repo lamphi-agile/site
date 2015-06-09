@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.lamphi.api.User;
-import fr.lamphi.api.UserDBResource;
-import fr.lamphi.api.UserResource;
+import fr.lamphi.api.user.User;
+import fr.lamphi.api.user.UserDBResource;
+import fr.lamphi.api.user.UserResource;
 
 
 

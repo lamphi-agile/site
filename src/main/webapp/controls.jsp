@@ -1,5 +1,5 @@
-<%@page import="fr.lamphi.api.LessonRessource"%>
-<%@page import="fr.lamphi.api.Lesson"%>
+<%@page import="fr.lamphi.api.lesson.LessonRessource"%>
+<%@page import="fr.lamphi.api.lesson.Lesson"%>
 <%@page import="java.util.List"%>
 
 <%@ include file="include/header.jsp" %>

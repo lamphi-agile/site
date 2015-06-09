@@ -1,6 +1,7 @@
-<%@page import="fr.lamphi.api.LessonRessource"%>
-<%@page import="fr.lamphi.api.Lesson"%>
+<%@page import="fr.lamphi.api.lesson.*"%>
+<%@page import="fr.lamphi.api.user.*"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Random"%>
 <%@page import="java.io.*"%>
 
 <%@ include file="include/header.jsp" %>
@@ -26,7 +27,53 @@
 
 			<div class="row">
 				<div class="col-lg-12">
-
+				
+				<h2>Ca vous intéresse ?</h2>
+				<div class="bs-component">
+						<table class="table table-striped table-hover ">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Titre</th>
+									<th>Auteur</th>
+									<th>Note</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%List<Lesson> lessonsR = new LessonRessource().getlessons(10);
+								Random rand = new Random();
+								
+								
+                  					Lesson lessonR = lessonsR.get((int) rand.nextInt(lessonsR.size()));
+                  				%>
+								<tr>
+									<td>
+										<% out.print(lessonR.getId()); %>
+									</td>
+									<td>
+										<a href="lesson.jsp?id=<%out.print(lessonR.getId());%>"><% out.print(lessonR.getTitle()); %></a>
+									</td>
+									<td>
+										<% User lessonUserR = lessonR.getAuthor();%>
+										<a href="profil.jsp?id=<%out.print(lessonUserR.getId());%>">
+											<img src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUserR.getEmail()));%>?s=17"/>
+											<% out.print(lessonUserR); %>
+										</a>
+									</td>
+									<td>
+										<% out.print(lessonR.getNote()); %>
+									</td>
+								</tr>
+							
+							</tbody>
+						</table>
+					</div>
+				
+				
+				
+				
+				
+					<h2>Liste des Cours</h2>
 					<div class="bs-component">
 						<table class="table table-striped table-hover ">
 							<thead>

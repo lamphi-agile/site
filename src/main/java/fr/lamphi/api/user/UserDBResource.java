@@ -1,4 +1,4 @@
-package fr.lamphi.api;
+package fr.lamphi.api.user;
 
 import java.util.List;
 
@@ -12,6 +12,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
+import fr.lamphi.api.App;
+
 @Path("/userdb")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserDBResource {
@@ -19,6 +21,8 @@ public class UserDBResource {
 	public UserDBResource () {
 		try {
 			dao.createUserTable();
+			dao.insert("DOE", "John", "john.doe@gmail.com", "johndoe", "johndoe", "M", "ens");
+			dao.insert("DUPONT", "Jean", "jean.dupont@gmail.com", "jeandupont", "jeandupont", "M", "etu");
 		}
 		catch (Exception e) {
 			System.out.println("La table existe déjà !");

@@ -1,5 +1,7 @@
 <%@page import="java.util.List"%>
-<%@page import="fr.lamphi.api.*"%>
+<%@page import="fr.lamphi.api.lesson.*"%>
+<%@page import="fr.lamphi.api.comment.*"%>
+<%@page import="fr.lamphi.api.user.*"%>
 <%@page import="javax.ws.rs.WebApplicationException"%>
 
 <%@ include file="include/header.jsp"%>
@@ -9,15 +11,15 @@
 
 
 	<%
-		LessonRessource ressource = new LessonRessource();
-			CommentairesRessource cr = new CommentairesRessource();
+			LessonRessource ressource = new LessonRessource();
+			CommentRessource cr = new CommentRessource();
 			
 			Lesson lesson = null;
-			List<Commentaires> comments = null;
+			List<Comment> comments = null;
 			if (request.getParameter("id") != null) {
 		try {
 			lesson = ressource.getlesson(Integer.parseInt(request
-					.getParameter("id")));
+			.getParameter("id")));
 			comments = cr.getComments(lesson.getId());
 		} catch (WebApplicationException e) {
 			response.sendRedirect("404.jsp");
@@ -76,27 +78,27 @@
 				<hr>
 
 				<form action="AddComment" method="post">
-					<input type="hidden" name="idLesson" value="<% out.print(lesson.getId()); %>">
+					<input type="hidden" name="idLesson" value="<%out.print(lesson.getId());%>">
 					<textarea name="comment" class="form-control" rows="3"
 						style="resize: none;"></textarea>
 					<button class="btn btn-primary" type="submit">Ajouter</button>
 				</form>
 
 				<%
-					for(Commentaires comment : comments){ 
-							User commentUser = new UserResource().getUser(comment.getIdUser());
-					
-						
-						out.println("<div class='media'>");
-						out.println(" <div class='media-left'>");
-						out.println("  <img class='media-object' src='http://www.gravatar.com/avatar/"+MD5Util.md5Hex(commentUser.getEmail())+";?s=64'/>");
-						 out.println(" </div>");
-						  out.println("<div class='media-body'>");
-						   out.println("<h4 class='media-heading'>"+commentUser.getName()+" "+commentUser.getSurname()+"</h4>");
-						    out.print(comment.getContenu());
-						  out.println("</div>");
-						out.println("</div>");
-						 }
+					for(Comment comment : comments){ 
+									User commentUser = new UserResource().getUser(comment.getIdUser());
+							
+								
+								out.println("<div class='media'>");
+								out.println(" <div class='media-left'>");
+								out.println("  <img class='media-object' src='http://www.gravatar.com/avatar/"+MD5Util.md5Hex(commentUser.getEmail())+";?s=64'/>");
+								 out.println(" </div>");
+								  out.println("<div class='media-body'>");
+								   out.println("<h4 class='media-heading'>"+commentUser.getName()+" "+commentUser.getSurname()+"</h4>");
+								    out.print(comment.getContenu());
+								  out.println("</div>");
+								out.println("</div>");
+								 }
 				%>
 			</div>
 		</div>

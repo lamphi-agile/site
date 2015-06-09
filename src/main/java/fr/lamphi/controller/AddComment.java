@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.lamphi.api.Commentaires;
-import fr.lamphi.api.CommentairesRessource;
-import fr.lamphi.api.User;
+import fr.lamphi.api.comment.Comment;
+import fr.lamphi.api.comment.CommentRessource;
+import fr.lamphi.api.user.User;
 
 @WebServlet(name = "addComment", urlPatterns = { "/AddComment" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
 public class AddComment extends HttpServlet {
@@ -27,11 +27,11 @@ public class AddComment extends HttpServlet {
 		if(user == null)
 			response.sendRedirect("connexion.jsp");
 		
-		Commentaires newComments = new Commentaires(0, user.getId(), Integer.parseInt(request.getParameter("idLesson")), request.getParameter("comment"), new Date(System.currentTimeMillis()).toString());
+		Comment newComments = new Comment(0, user.getId(), Integer.parseInt(request.getParameter("idLesson")), request.getParameter("comment"), new Date(System.currentTimeMillis()).toString());
 
 
 		
-		CommentairesRessource cr = new CommentairesRessource();
+		CommentRessource cr = new CommentRessource();
 		cr.createCom(newComments);
 		
 		response.sendRedirect("lesson.jsp?id="+request.getParameter("idLesson"));

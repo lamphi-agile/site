@@ -1,12 +1,12 @@
-package fr.lamphi.api;
+package fr.lamphi.api.category;
 
 
-public class LessonDivision {
+public class Category {
 	
 	private String category;
 	private int id; 
 	
-	public LessonDivision (String category) {
+	public Category (String category) {
 			this.setCategory(category);
 	}
 
