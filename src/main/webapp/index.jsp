@@ -136,7 +136,7 @@
 				</div>
 				<div class="col-sm-4">
 
-					<h2>Ca vous intéresse ?</h2>
+					<h2>Ça vous intéresse ?</h2>
 					<div class="bs-component">
 						<%
 							List<Lesson> lessonsR = new LessonDBRessource().getLessons(10);
