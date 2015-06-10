@@ -33,6 +33,13 @@ public class LessonDBRessource {
 			createLesson(newLesson);
 			createLesson(newLesson2);
 			createLesson(newLesson3);
+
+			dao.insertNote(1, 1, 5);
+			dao.insertNote(1, 2, 3);
+			
+			dao.insertNote(2, 1, 4);
+			dao.insertNote(2, 2, 1);
+			
 			
 		}
 		catch (Exception e) {
