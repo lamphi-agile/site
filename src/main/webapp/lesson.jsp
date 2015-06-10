@@ -70,7 +70,7 @@
 					</small>
 				</div>
 
-				<div class="col-md-2 col-md-offset-2">
+				<div class="col-md-4">
 					<p class="text-right">
 						<%
 					if(currentUser != null && currentUser.getStatus().equals("ens")) {
@@ -85,7 +85,7 @@
 				%>
 						<a class="btn btn-primary"
 							href="editlesson.jsp?id=<%out.print(lesson.getId());%>"
-							style="margin-top: 2em"><i class="fa fa-certificate"></i>
+							style="margin-top: 2em"><i class="fa fa-pencil"></i>
 							Modifier le cours</a>
 						<%
 					}
@@ -102,9 +102,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div id="contenu">
-						<%
-							out.print(lesson.getContent());
-						%>
+<% out.print(lesson.getContent()); %>
 					</div>
 				</div>
 			</div>
@@ -221,7 +219,7 @@
 			min : 0,
 			max : 5,
 			step : 0.5,
-			size : "xs",
+			size : "xxs",
 			defaultCaption : "{rating} sur 5",
 			clearCaption : "Non Evalué",
 			showClear : false,

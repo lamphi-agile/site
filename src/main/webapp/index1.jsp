@@ -1,7 +1,7 @@
-<%@page import="fr.lamphi.api.category.*"%>
-<%@page import="fr.lamphi.api.certification.*"%>
+<%@page import="fr.lamphi.api.category.CategoryDBRessource"%>
 <%@page import="fr.lamphi.api.lesson.*"%>
 <%@page import="fr.lamphi.api.user.*"%>
+<%@page import="fr.lamphi.api.certification.*"%>
 <%@page import="fr.lamphi.api.*"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Random"%>
@@ -13,40 +13,48 @@
 <body>
 	<%@ include file="include/navbar.jsp"%>
 
-	<%
-		LessonDBRessource ressource = new LessonDBRessource();
-	
-		Category category = null;
-	
-		List<Lesson> lessons = null;
-		if (request.getParameter("id") != null) {
-			try {
-				category = new CategoryDBRessource().getCategory(Integer.parseInt(request.getParameter("id")));
-				lessons = ressource.getLessonsByCategory(Integer.parseInt(request.getParameter("id")));
-			} catch (WebApplicationException e) {
-				response.sendRedirect("404.jsp");
-			}
-		} else {
-			response.sendRedirect("index.jsp");
-		}
-	%>
+
 	<!-- Page Content -->
 	<div class="container">
 		<!-- Page Header -->
 		<div class="page-header" id="banner">
 			<div class="row">
+				<%
+					if (request.getAttribute("alert") != null) {
+				%>
+				<div class="alert alert-danger" role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Fermer">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="glyphicon glyphicon-exclamation-sign"
+						aria-hidden="true"></span>
+					<%
+						out.print(request.getAttribute("alert"));
+					%>
+				</div>
+				<%
+					}
+				%>
 				<div class="col-md-8">
-					<h1><% out.print(category.getName()); %></h1>
+					<h1>Les cours</h1>
+				</div>
+				<div class="col-md-2 col-md-offset-2">
+					<p class="text-right">
+						<a href="addlesson.jsp" class="btn btn-success"
+							style="margin-top: 1.7em"><i class="fa fa-plus-square"></i>
+							Ajouter un cours</a>
+					</p>
 				</div>
 			</div>
 		</div>
 
-		<!-- Tables
-      ================================================== -->
 		<div class="bs-docs-section">
 
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-sm-8">
+
+					<h2>Liste des Cours</h2>
 					<div class="bs-component">
 						<table class="table table-striped table-hover ">
 							<thead>
@@ -62,6 +70,7 @@
 							<tbody>
 								<%
 								LessonDBRessource lessonRessource = new LessonDBRessource();
+									List<Lesson> lessons = lessonRessource.getLessons(10);
 									CategoryDBRessource cdbr = new CategoryDBRessource();
 									CertficationDBRessource cdbressource = new CertficationDBRessource();
 
@@ -125,6 +134,40 @@
 						</table>
 					</div>
 					<!-- /example -->
+				</div>
+				<div class="col-sm-4">
+
+					<h2>Ça vous intéresse ?</h2>
+					<div class="bs-component">
+						<%
+							List<Lesson> lessonsR = new LessonDBRessource().getLessons(10);
+							Random rand = new Random();
+
+							Lesson lessonR = lessonsR.get((int) rand.nextInt(lessonsR.size()));
+						%>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="thumbnail">
+									<div class="caption">
+										<h3><% out.print(lessonR.getTitle()); %> <small><%out.print(lessonR.getAuthor().getSurname() + " "+lessonR.getAuthor().getName()); %></small></h3>
+											<a href="lesson.jsp?id=<%out.print(lessonR.getId());%>" class="btn btn-primary" role="button">Voir le cours</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h2>Stats</h2>
+					<div class="bs-component">
+					<%UserDBResource usdbressource = new UserDBResource(); %>
+						<div class="row">
+							<div class="col-md-12">
+								Cours <span class="badge"><%out.print(lessonRessource.getNbOfLessons()); %></span>
+								Cours certifiés <span class="badge"><%out.print(cdbressource.getNbCertifications()); %></span>
+								Utilisateurs <span class="badge"><%out.print(usdbressource.getNbOfUsers()); %></span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

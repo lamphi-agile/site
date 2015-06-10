@@ -27,13 +27,13 @@ public class AddLesson extends HttpServlet {
         if(user == null)
 			response.sendRedirect("register.jsp");
         
-        Lesson lesson = new Lesson(0,request.getParameter("title"), request.getParameter("contenu"), user.getId(), ""+System.currentTimeMillis(),1, false,0,0);
+        Lesson lesson = new Lesson(0,request.getParameter("title"), request.getParameter("contenu"), user.getId(), ""+System.currentTimeMillis(),Integer.parseInt(request.getParameter("category")), false,0,0);
 
 
         System.out.println(lesson);
         LessonDBRessource lr = new LessonDBRessource();
-        lr.createLesson(lesson);
+        lesson = lr.createLesson(lesson);
        
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("lesson.jsp?id="+lesson.getId());
 	}
 }

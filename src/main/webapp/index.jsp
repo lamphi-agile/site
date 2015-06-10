@@ -1,4 +1,4 @@
-<%@page import="fr.lamphi.api.category.CategoryDBRessource"%>
+<%@page import="fr.lamphi.api.category.*"%>
 <%@page import="fr.lamphi.api.lesson.*"%>
 <%@page import="fr.lamphi.api.user.*"%>
 <%@page import="fr.lamphi.api.certification.*"%>
@@ -54,86 +54,45 @@
 			<div class="row">
 				<div class="col-sm-8">
 
-					<h2>Liste des Cours</h2>
-					<div class="bs-component">
-						<table class="table table-striped table-hover ">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Titre</th>
-									<th>Catégorie</th>
-									<th>Auteur</th>
-									<th>Note</th>
-									<th>Vues</th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-								LessonDBRessource lessonRessource = new LessonDBRessource();
-									List<Lesson> lessons = lessonRessource.getLessons(10);
-									CategoryDBRessource cdbr = new CategoryDBRessource();
-									CertficationDBRessource cdbressource = new CertficationDBRessource();
+					<%
+						CategoryDBRessource cdbr = new CategoryDBRessource();
+						List<Category> categories = cdbr.getCategories(100);
+						int i = 0;
+						for (Category category : categories) {
+							if ((i % 3 == 0 && i != 0) || (i > categories.size())) {
+								out.println("</div>");
+							}
 
-									for (Lesson lesson : lessons) {
-								%>
-								<tr>
-									<td>
+							if (i % 3 == 0 && i != categories.size()) {
+								out.println("<div class='row'>");
+							}
+					%>
+
+					<div class="col-sm-4">
+						<a href="category.jsp?id=<%out.print(category.getId());%>">
+							<div class="thumbnail">
+								<img src="<%out.print(category.getImage());%>"
+									alt="<%out.print(category.getName());%>"
+									style="width: 250px; height: 100px">
+								<div class="caption">
+									<h3>
 										<%
-											out.print(lesson.getId());
+											out.print(category.getName());
 										%>
-									</td>
-									<td>
-									<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><%int nbCertifications = cdbressource.getNbCertfications(lesson.getId());
-										if(nbCertifications > 1) {
-											out.print("<i class=\"fa fa-certificate\"></i>");
-										}%>
-											<%
-												out.print(lesson.getTitle());
-											%>
-									</a></td>
-									<td>
-										<%
-											try {
-													out.print("<a href='category.jsp?id="
-															+ lesson.getCategory() + "'>"
-															+ cdbr.getCategory(lesson.getCategory()).getName()
-															+ "</a>");
-												} catch (WebApplicationException e) {
-													out.print("Aucune catégorie");
-												}
-										%>
-									</td>
-									<td>
-										<%
-											User lessonUser = lesson.getAuthor();
-										%> <a href="profil.jsp?id=<%out.print(lessonUser.getId());%>">
-											<img
-											src="http://www.gravatar.com/avatar/<%out.print(MD5Util.md5Hex(lessonUser.getEmail()));%>?s=17" />
-											<%
-												out.print(lessonUser);
-											%>
-									</a>
-									</td>
-									<td>
-										<span class="badge">
-										<%
-											out.print(lesson.getNote());
-										%>
-										 sur 5</span>
-									</td>
-									<td>
-										<%
-											out.print(lesson.getViews());
-										%>
-									</td>
-								</tr>
-								<%
-									}
-								%>
-							</tbody>
-						</table>
+									</h3>
+								</div>
+							</div>
+						</a>
 					</div>
-					<!-- /example -->
+
+					<%
+						i++;
+							if (i == categories.size()) {
+								out.println("</div>");
+							}
+
+						}
+					%>
 				</div>
 				<div class="col-sm-4">
 
@@ -145,26 +104,41 @@
 
 							Lesson lessonR = lessonsR.get((int) rand.nextInt(lessonsR.size()));
 						%>
-
-						<div class="row">
-							<div class="col-md-12">
-								<div class="thumbnail">
-									<div class="caption">
-										<h3><% out.print(lessonR.getTitle()); %> <small><%out.print(lessonR.getAuthor().getSurname() + " "+lessonR.getAuthor().getName()); %></small></h3>
-											<a href="lesson.jsp?id=<%out.print(lessonR.getId());%>" class="btn btn-primary" role="button">Voir le cours</a>
-									</div>
-								</div>
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>
+									<%
+										out.print(lessonR.getTitle());
+									%>
+									<small> <%
+ 	out.print(lessonR.getAuthor().getSurname() + " "
+ 			+ lessonR.getAuthor().getName());
+ %>
+									</small>
+								</h3>
+								<a href="lesson.jsp?id=<%out.print(lessonR.getId());%>"
+									class="btn btn-primary" role="button">Voir le cours</a>
 							</div>
 						</div>
 					</div>
 					<h2>Stats</h2>
 					<div class="bs-component">
-					<%UserDBResource usdbressource = new UserDBResource(); %>
-						<div class="row">
-							<div class="col-md-12">
-								Cours <span class="badge"><%out.print(lessonRessource.getNbOfLessons()); %></span>
-								Cours certifiés <span class="badge"><%out.print(cdbressource.getNbCertifications()); %></span>
-								Utilisateurs <span class="badge"><%out.print(usdbressource.getNbOfUsers()); %></span>
+						<%
+							UserDBResource usdbressource = new UserDBResource();
+							LessonDBRessource lessonRessource = new LessonDBRessource();
+							CertficationDBRessource cdbressource = new CertficationDBRessource();
+						%><div class="thumbnail">
+							<div class="caption">
+								Cours <span class="badge"> <%
+ 	out.print(lessonRessource.getNbOfLessons());
+ %>
+								</span> Cours certifiés <span class="badge"> <%
+ 	out.print(cdbressource.getNbCertifications());
+ %>
+								</span> Utilisateurs <span class="badge"> <%
+ 	out.print(usdbressource.getNbOfUsers());
+ %>
+								</span>
 							</div>
 						</div>
 					</div>
@@ -186,6 +160,5 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
 </body>
 </html>

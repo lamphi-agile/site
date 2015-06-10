@@ -25,10 +25,13 @@ public class CategoryDBRessource {
 		try {
 			dao.createCategoriesTable();
 			
-			Category category = new Category(0, "Informatique", "", 0);
-			Category category2 = new Category(0, "Histoire", "", 0);
-			createCategory(category);
-			createCategory(category2);
+			createCategory(new Category(0,"Informatique","http://www.univers-bureautique.fr/wp-content/uploads/2014/02/1260125-informatique-de-gestion-quels-metiers-pour-quels-profils1.jpg",0));
+			createCategory(new Category(0,"Histoire","http://i.huffpost.com/gen/2580642/images/a-HISTOIRE-COULEURS-640x468.jpg",0));
+			createCategory(new Category(0,"Mathématiques","http://www.les-calculatrices.com/images/histoire-mathematiques.jpg",0));
+			createCategory(new Category(0,"Littérature","http://www.bonjourdefrance.com/image/le-passe-simple-et-litterature-grammaire-bdf-19.jpg",0));
+			createCategory(new Category(0,"Médecine","http://images.atelier.net/sites/default/files/imagecache/scale_crop_587_310/articles/423819/atelier-medecine-holographique.jpg",0));
+			createCategory(new Category(0,"Science Physique","http://3.bp.blogspot.com/-a-NfnUSq9fI/U2KbmCRxPMI/AAAAAAAAQnQ/iLsWA7FMZ-E/s1600/physique-quantique.png",0));
+			createCategory(new Category(0,"Sport","http://orthodz.com/wp-content/uploads/2014/09/sport.jpg",0));
 		}
 		catch (Exception e) {
 		}

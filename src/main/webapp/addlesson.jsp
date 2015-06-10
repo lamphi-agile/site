@@ -1,7 +1,8 @@
 <%@page import="fr.lamphi.api.category.*"%>
+<%@page import="java.util.*"%>
 <%if(session.getAttribute("user") == null) {
 	request.setAttribute("alert", "Vous devez être authentifié pour pouvoir ajouter un cours");
-	request.getRequestDispatcher("index.jsp").forward(request, response);
+	request.getRequestDispatcher("register.jsp").forward(request, response);
 	return;
 }
 	%>
@@ -24,7 +25,7 @@
 		<form method="post" action="/AddLesson">
 		  <div class="form-group">
 		    <label for="inputTitle">Titre</label>
-		    <input type="text" name="title" class="form-control" id="inputTitle" placeholder="Titre">
+		    <input type="text" name="title" class="form-control" id="inputTitle" placeholder="Titre" required>
 		  </div>
 		  <div class="form-group">
 				<label for="inputTitle">Catégorie</label> <select

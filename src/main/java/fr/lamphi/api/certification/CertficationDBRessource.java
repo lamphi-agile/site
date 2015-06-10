@@ -27,10 +27,10 @@ public class CertficationDBRessource {
 			
 			dao.certifiate(1, 1);
 			dao.certifiate(2, 1);
-			
+			dao.certifiate(1, 2);
+			dao.certifiate(2, 3);
 		}
 		catch (Exception e) {
-			System.out.println("La table CERTIFICATIONS existe déjà !");
 		}
 	}
 
@@ -42,10 +42,10 @@ public class CertficationDBRessource {
 	@GET
 	@Path("/{lessonid}")
 	public int getNbCertfications(@PathParam("lessonid") int lessonid) {
-		return dao.getNbCertifications(lessonid);
+		return dao.getNbCertificationsForLesson(lessonid);
 	}
 	
 	public int getNbCertifications() {
-		return dao.getNbCertifications();
+		return dao.getCertifications().size();
 	}
 }

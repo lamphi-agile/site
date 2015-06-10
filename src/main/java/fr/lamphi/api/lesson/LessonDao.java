@@ -58,7 +58,7 @@ public interface LessonDao {
 	
 	void close();
 
-	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lessons.id) from lessons where category = :categoryId")
+	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lessons.id) as note from lessons where category = :categoryId")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<Lesson> getLessonsByCategory(@Bind("categoryId") int categoryId);
 	
