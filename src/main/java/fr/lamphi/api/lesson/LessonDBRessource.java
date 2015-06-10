@@ -13,7 +13,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 import fr.lamphi.api.App;
-import fr.lamphi.api.user.User;
 
 @Path("/lessondb")
 @Produces(MediaType.APPLICATION_JSON)
@@ -35,11 +34,11 @@ public class LessonDBRessource {
 			createLesson(newLesson2);
 			createLesson(newLesson3);
 
-			dao.insertNote(1, 1, 5);
-			dao.insertNote(1, 2, 3);
+			insertNote(new Note(1, 1, 5));
+			insertNote(new Note(1, 2, 3));
 			
-			dao.insertNote(2, 1, 4);
-			dao.insertNote(2, 2, 1);
+			insertNote(new Note(2, 1, 4));
+			insertNote(new Note(2, 2, 1));
 			
 			
 		}
@@ -61,8 +60,10 @@ public class LessonDBRessource {
 		return lesson;
 	}
 	
-	public int insertNote(Lesson lesson, User user, double note) {
-		int out = dao.insertNote(lesson.getId(), user.getId(), note);
+	@POST
+	@Path("/note")
+	public int insertNote(Note note) {
+		int out = dao.insertNote(note.getLesson(), note.getUser(), note.getRate());
 		return out;
 	}
 
