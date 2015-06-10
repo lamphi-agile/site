@@ -148,10 +148,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="thumbnail">
-									<img src="http://lorempicsum.com/futurama/350/200/1">
 									<div class="caption">
 										<h3><% out.print(lessonR.getTitle()); %></h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae dolor at magna dignissim convallis. Aenean eget felis nisl. Nullam maximus, erat eu luctus eleifend, orci ligula laoreet nulla, a volutpat augue neque at velit. Donec sit amet nullam. </p>
 										<p>
 											<a href="lesson.jsp?id=<%out.print(lessonR.getId());%>" class="btn btn-primary" role="button">Voir le cours</a>
 										</p>
