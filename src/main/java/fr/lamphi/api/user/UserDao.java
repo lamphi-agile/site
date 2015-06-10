@@ -33,4 +33,10 @@ public interface UserDao {
 	void dropUserTable(); 
 	
 	void close();
+	
+	@SqlUpdate("update users set name=:name, surname=:surname, email=:email, pseudo=:pseudo, password=:password, sex=:sex, status=:status")
+	@GetGeneratedKeys
+	int update(@Bind("name") String name, @Bind("surname") String surname, @Bind("email") String email, @Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("sex") String sex, @Bind("status") String status);
+
+
 }

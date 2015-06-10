@@ -24,15 +24,16 @@ public class EditLesson extends HttpServlet {
 
         User user = (User)request.getSession().getAttribute("user");
         
+        int lessonId = (int)request.getSession().getAttribute("lessonUpdateId");
         if(user == null)
 			response.sendRedirect("register.jsp");
         
-        Lesson lesson = new Lesson(0,request.getParameter("title"), request.getParameter("contenu"), user.getId(), ""+System.currentTimeMillis(),1, false,0,0);
+        Lesson lesson = new Lesson(lessonId,request.getParameter("title"), request.getParameter("contenu"), user.getId(), ""+System.currentTimeMillis(),1, false,0,0);
 
 
         System.out.println(lesson);
         LessonDBRessource lr = new LessonDBRessource();
-        lr.createLesson(lesson);
+        lr.updateLesson(lesson);
        
         response.sendRedirect("index.jsp");
 	}

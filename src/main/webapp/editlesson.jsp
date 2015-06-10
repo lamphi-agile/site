@@ -27,6 +27,8 @@
 	if (currentUser.getId() != lesson.getIdAuthor()) {
 		response.sendRedirect("index.jsp");
 	}
+	
+	session.setAttribute("lessonUpdateId", lesson.getId());
 %>
 <%@ include file="include/header.jsp"%>
 
@@ -44,7 +46,7 @@
 			</div>
 		</div>
 
-		<form method="post" action="/AddLesson">
+		<form method="post" action="/EditLesson">
 			<div class="form-group">
 				<label for="inputTitle">Titre</label> <input type="text"
 					name="title" class="form-control" id="inputTitle"

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -34,6 +35,13 @@ public class UserDBResource {
 		user.setPassword(MD5Util.md5Hex(user.getPassword()));
 		int id = dao.insert(user.getName(), user.getSurname(), user.getEmail(), user.getPseudo(), user.getPassword(), user.getSex(), user.getStatus());
 		user.setId(id);
+		return user;
+	}
+	
+	@PUT
+	public User updateUser(User user) {
+		user.setPassword(MD5Util.md5Hex(user.getPassword()));
+		dao.update(user.getName(), user.getSurname(), user.getEmail(), user.getPseudo(), user.getPassword(), user.getSex(), user.getStatus());
 		return user;
 	}
 
