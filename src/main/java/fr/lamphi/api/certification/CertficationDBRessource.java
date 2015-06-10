@@ -44,4 +44,8 @@ public class CertficationDBRessource {
 	public int getNbCertfications(@PathParam("lessonid") int lessonid) {
 		return dao.getNbCertifications(lessonid);
 	}
+	
+	public int getNbCertifications() {
+		return dao.getNbCertifications();
+	}
 }

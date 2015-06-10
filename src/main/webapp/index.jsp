@@ -69,7 +69,8 @@
 							</thead>
 							<tbody>
 								<%
-									List<Lesson> lessons = new LessonDBRessource().getLessons(10);
+								LessonDBRessource lessonRessource = new LessonDBRessource();
+									List<Lesson> lessons = lessonRessource.getLessons(10);
 									CategoryDBRessource cdbr = new CategoryDBRessource();
 									CertficationDBRessource cdbressource = new CertficationDBRessource();
 
@@ -149,12 +150,21 @@
 							<div class="col-md-12">
 								<div class="thumbnail">
 									<div class="caption">
-										<h3><% out.print(lessonR.getTitle()); %></h3>
-										<p>
+										<h3><% out.print(lessonR.getTitle()); %> <small><%out.print(lessonR.getAuthor().getSurname() + " "+lessonR.getAuthor().getName()); %></small></h3>
 											<a href="lesson.jsp?id=<%out.print(lessonR.getId());%>" class="btn btn-primary" role="button">Voir le cours</a>
-										</p>
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+					<h2>Stats</h2>
+					<div class="bs-component">
+					<%UserDBResource usdbressource = new UserDBResource(); %>
+						<div class="row">
+							<div class="col-md-12">
+								Cours <span class="badge"><%out.print(lessonRessource.getNbOfLessons()); %></span>
+								Cours certifiés <span class="badge"><%out.print(cdbressource.getNbCertifications()); %></span>
+								Utilisateurs <span class="badge"><%out.print(usdbressource.getNbOfUsers()); %></span>
 							</div>
 						</div>
 					</div>

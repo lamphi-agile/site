@@ -62,4 +62,8 @@ public class UserDBResource {
 	public List<User> getUsers(@DefaultValue("10") @QueryParam("limit") int limit) {
 		return dao.getUsers(limit);
 	}
+	
+	public int getNbOfUsers() {
+		return dao.getNbOfUsers();
+	}
 }
