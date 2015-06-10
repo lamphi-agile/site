@@ -63,6 +63,7 @@
 									<th>Catégorie</th>
 									<th>Auteur</th>
 									<th>Note</th>
+									<th>Vues</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -109,6 +110,11 @@
 									<td>
 										<%
 											out.print(lesson.getNote());
+										%>
+									</td>
+									<td>
+										<%
+											out.print(lesson.getViews());
 										%>
 									</td>
 								</tr>
