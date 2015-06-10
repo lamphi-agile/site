@@ -31,11 +31,14 @@ public interface LessonDao {
 	@SqlQuery("select avg(rate) from notes where lessonid = :lessonid and ratedate > date('now')-7")
 	double getNoteWeekAverage(@Bind("lessonid") int lessonid);
 	
+	@SqlQuery("select lessonid, avg(rate) as avg from notes where ratedate > date('now')-7 group by lessonid order by avg desc")
+	List<Lesson>  getBestNoteWeekAverage();
+	
 	@SqlQuery("select *, (select avg(rate) from notes where lessonid = :id) as note from lessons where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	Lesson findById(@Bind("id") int id);
 	
-	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lesssons.id) from lessons where title like '%' || :keywords || '%'")
+	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lesssons.id) as note from lessons where title like '%' || :keywords || '%'")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<Lesson> search(@Bind("keywords") String keywords);
 	

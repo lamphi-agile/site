@@ -187,11 +187,12 @@
 				dataType : "json",
 				data : JSON.stringify({
 					"lesson" : <% out.print(lesson.getId()); %>,
-					"user": <% out.print(lesson.getAuthor().getId()); %>,
+					"user": <% out.print(currentUser!=null?currentUser.getId():"0");%>,
 					"rate": value
 				}),
 				success : function(data, textStatus, jqXHR) {
-					afficheUser(data);
+					console.log(data);
+					$('#inputRating').rating('update', data.note);
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 					alert('postUser error: ' + textStatus);

@@ -62,9 +62,11 @@ public class LessonDBRessource {
 	
 	@POST
 	@Path("/note")
-	public int insertNote(Note note) {
-		int out = dao.insertNote(note.getLesson(), note.getUser(), note.getRate());
-		return out;
+	public Lesson insertNote(Note note) {
+		if(note.getUser() != 0){
+			dao.insertNote(note.getLesson(), note.getUser(), note.getRate());
+		}
+		return dao.findById(note.getLesson());
 	}
 
 	@GET
@@ -95,6 +97,13 @@ public class LessonDBRessource {
 	@Path("/note/perweek/{id}")
 	public double getNoteWeekAverage(@PathParam("id") int id) {
 		double out = dao.getNoteWeekAverage(id);
+		return out;
+	}
+	
+	@GET
+	@Path("/note/perweek/{id}/best")
+	public List<Lesson>  getBestNoteWeekAverage() {
+		List<Lesson> out = dao.getBestNoteWeekAverage();
 		return out;
 	}
 
