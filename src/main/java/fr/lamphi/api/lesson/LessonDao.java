@@ -12,6 +12,13 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 public interface LessonDao {
 	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, idauthor int, createddate datetime, category int, note double default 0, views int default 0, foreign key(idauthor) references users(id))")
 	void createLessonsTable();
+	@SqlUpdate("create table notes(lessonid int primary key, userid int primary, rate double, ratedate datetime")
+	void createNotesTable();
+	
+	@SqlUpdate("replace into notes(lessonid, userid, rate) values (:lessonid, :userid, :rate, date('now'))")
+	@GetGeneratedKeys
+	int insertNote(@Bind("lessonid") int lessonid, @Bind("userid") int userid, @Bind("rate") double rate);
+
 
 	@SqlUpdate("insert into lessons (title, content, idauthor, createddate, category) values (:title, :content, :idauthor, date('now'), :category)")
 	@GetGeneratedKeys
