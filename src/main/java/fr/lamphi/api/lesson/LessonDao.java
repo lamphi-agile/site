@@ -38,7 +38,7 @@ public interface LessonDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
 	Lesson findById(@Bind("id") int id);
 	
-	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lesssons.id) as note from lessons where title like '%' || :keywords || '%'")
+	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lessons.id) from lessons where title like '%' || :keywords || '%'")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<Lesson> search(@Bind("keywords") String keywords);
 	
