@@ -46,6 +46,12 @@ public class LessonDBRessource {
 		lesson.setId(id);
 		return lesson;
 	}
+	
+	public Lesson incrementViews(Lesson lesson) {
+		dao.incrementViews(lesson.getId());
+		lesson.setViews(lesson.getViews()+1);
+		return lesson;
+	}
 
 	@GET
 	@Path("/{id}")

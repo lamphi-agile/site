@@ -24,6 +24,7 @@
 			try {
 				lesson = ressource.getLesson(Integer.parseInt(request
 						.getParameter("id")));
+				ressource.incrementViews(lesson);
 				comments = cr.getComments(lesson.getId());
 			} catch (WebApplicationException e) {
 				response.sendRedirect("404.jsp");
@@ -63,6 +64,7 @@
 						out.print("Ce cours a été certifié " + nbcertifications+ " fois");
 					}
 					%>
+					- <%out.print(lesson.getViews()); %> vues
 					</small>		
 				</div>
 				<% if(currentUser != null && currentUser.getStatus().equals("ens")) { %>

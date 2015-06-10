@@ -35,7 +35,7 @@
 		<div class="page-header" id="banner">
 			<div class="row">
 				<div class="col-md-8">
-					<h1>Liste des cours de la catégorie <% out.print(category.getName()); %></h1>
+					<h1>Cours de la catégorie <small>"<% out.print(category.getName()); %>"</small></h1>
 				</div>
 			</div>
 		</div>
@@ -46,8 +46,6 @@
 
 			<div class="row">
 				<div class="col-lg-12">
-
-					<h2>Liste des Cours</h2>
 					<div class="bs-component">
 						<table class="table table-striped table-hover ">
 							<thead>

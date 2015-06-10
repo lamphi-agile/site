@@ -32,7 +32,7 @@
 					</button>
 					<span class="glyphicon glyphicon-exclamation-sign"
 						aria-hidden="true"></span>
-					Aucun résultat n'a était trouvé
+					Aucun résultat n'a été trouvé
 				</div>
 				<%
 					} else { %>

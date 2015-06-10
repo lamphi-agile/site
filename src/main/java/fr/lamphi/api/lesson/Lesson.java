@@ -14,6 +14,7 @@ public class Lesson {
 	private int cptValide;
 	private double note;
 	private boolean certified;
+	private int views;
 	
 	public Lesson(){}
 		
@@ -117,5 +118,13 @@ public class Lesson {
 
 	public void setCptValide(int cptValide) {
 		this.cptValide = cptValide;
+	}
+
+	public int getViews() {
+		return views;
+	}
+
+	public void setViews(int views) {
+		this.views = views;
 	}
 }
