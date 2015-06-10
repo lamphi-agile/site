@@ -13,6 +13,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 import fr.lamphi.api.App;
+import fr.lamphi.api.user.User;
 
 @Path("/lessondb")
 @Produces(MediaType.APPLICATION_JSON)
@@ -59,6 +60,11 @@ public class LessonDBRessource {
 		lesson.setViews(lesson.getViews()+1);
 		return lesson;
 	}
+	
+	public int insertNote(Lesson lesson, User user, double note) {
+		int out = dao.insertNote(lesson.getId(), user.getId(), note);
+		return out;
+	}
 
 	@GET
 	@Path("/{id}")
@@ -74,6 +80,20 @@ public class LessonDBRessource {
 	@Path("/search/{keyword}")
 	public List<Lesson> search(@PathParam("keyword") String keyword) {
 		List<Lesson> out = dao.search(keyword);
+		return out;
+	}
+	
+	@GET
+	@Path("/note/{id}")
+	public double getNoteAverage(@PathParam("id") int id) {
+		double out = dao.getNoteAverage(id);
+		return out;
+	}
+	
+	@GET
+	@Path("/note/perweek/{id}")
+	public double getNoteWeekAverage(@PathParam("id") int id) {
+		double out = dao.getNoteWeekAverage(id);
 		return out;
 	}
 
