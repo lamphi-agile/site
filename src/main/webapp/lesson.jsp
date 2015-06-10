@@ -69,21 +69,31 @@
  %> vues
 					</small>
 				</div>
-				<%
-					if(currentUser != null && currentUser.getStatus().equals("ens")) {
-				%>
+
 				<div class="col-md-2 col-md-offset-2">
 					<p class="text-right">
+						<%
+					if(currentUser != null && currentUser.getStatus().equals("ens")) {
+				%>
 						<a class="btn btn-success"
 							href="lesson.jsp?id=<%out.print(request.getParameter("id"));%>&certifiate=1"
 							style="margin-top: 2em"><i class="fa fa-certificate"></i>
 							Certifié</a>
+						<%
+					}
+						if(currentUser != null && currentUser.getId() == lesson.getIdAuthor()) {
+				%>
+						<a class="btn btn-primary"
+							href="editlesson.jsp?id=<%out.print(lesson.getId());%>"
+							style="margin-top: 2em"><i class="fa fa-certificate"></i>
+							Modifier le cours</a>
+						<%
+					}
+						%>
 					</p>
 
 				</div>
-				<%
-					}
-				%>
+
 			</div>
 		</div>
 
@@ -117,8 +127,9 @@
 					</a>
 				</div>
 				<div class="col-sm-offset-5 col-sm-3">
-					<h3>Note</h3><input id="inputRating" class="rating" data-symbol="&#xf19d;"
-						data-glyphicon="false" data-rating-class="rating-fa"/>
+					<h3>Note<h3>
+					<input id="inputRating" class="rating" data-symbol="&#xf19d;"
+						data-glyphicon="false" data-rating-class="rating-fa" />
 
 				</div>
 			</div>
@@ -221,29 +232,42 @@
 	<%out.print(lesson.getNote());%>
 		);
 
-		$('#inputRating').on('rating.change', function(event, value, caption) {
-			console.log(value);
-			console.log(caption);
-			$.ajax({
-				type : 'POST',
-				contentType : 'application/json',
-				url : "/v1/lessondb/note",
-				dataType : "json",
-				data : JSON.stringify({
-					"lesson" : <% out.print(lesson.getId()); %>,
-					"user": <% out.print(currentUser!=null?currentUser.getId():"0");%>,
-					"rate": value
-				}),
-				success : function(data, textStatus, jqXHR) {
-					console.log(data);
-					$('#inputRating').rating('update', data.note);
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					alert('postUser error: ' + textStatus);
-				}
-			});
-			
-		});
+		$('#inputRating')
+				.on(
+						'rating.change',
+						function(event, value, caption) {
+							console.log(value);
+							console.log(caption);
+							$
+									.ajax({
+										type : 'POST',
+										contentType : 'application/json',
+										url : "/v1/lessondb/note",
+										dataType : "json",
+										data : JSON
+												.stringify({
+													"lesson" :
+	<% out.print(lesson.getId()); %>
+		,
+													"user" :
+	<% out.print(currentUser!=null?currentUser.getId():"0");%>
+		,
+													"rate" : value
+												}),
+										success : function(data, textStatus,
+												jqXHR) {
+											console.log(data);
+											$('#inputRating').rating('update',
+													data.note);
+										},
+										error : function(jqXHR, textStatus,
+												errorThrown) {
+											alert('postUser error: '
+													+ textStatus);
+										}
+									});
+
+						});
 	</script>
 	<script type="text/javascript">
 		function ajouter() {

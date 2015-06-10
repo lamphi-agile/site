@@ -1,3 +1,4 @@
+<%@page import="fr.lamphi.api.category.*"%>
 <%if(session.getAttribute("user") == null) {
 	request.setAttribute("alert", "Vous devez être authentifié pour pouvoir ajouter un cours");
 	request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -25,6 +26,20 @@
 		    <label for="inputTitle">Titre</label>
 		    <input type="text" name="title" class="form-control" id="inputTitle" placeholder="Titre">
 		  </div>
+		  <div class="form-group">
+				<label for="inputTitle">Catégorie</label> <select
+					class="form-control" name="category">
+					<%
+				List<Category> categories = new CategoryDBRessource().getCategories(50);
+				
+				for(Category category : categories){
+				%>
+					<option value="<% out.print(category.getId()); %>">
+						<% out.print(category.getName()); %>
+					</option>
+					<% } %>
+				</select>
+			</div>
 		  <div class="form-group">
 		    <label for="inputContenu">Contenu</label>
 		    <textarea name="contenu" id="contenu" class="form-control" rows="3"></textarea>

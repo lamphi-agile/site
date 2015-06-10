@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -51,6 +52,12 @@ public class LessonDBRessource {
 		int id = dao.insert(lesson.getTitle(), lesson.getContent(),
 				lesson.getIdAuthor(), lesson.getCategory());
 		lesson.setId(id);
+		return lesson;
+	}
+	
+	@PUT
+	public Lesson updateLesson(Lesson lesson) {
+		dao.update(lesson.getId(),lesson.getTitle(), lesson.getContent(), lesson.getCategory());
 		return lesson;
 	}
 	
@@ -117,5 +124,9 @@ public class LessonDBRessource {
 	@Path("/category/{categoryId}")
 	public List<Lesson> getLessonsByCategory(@PathParam("categoryId") int categoryId) {
 		return dao.getLessonsByCategory(categoryId);
+	}
+	
+	public int getNbOfLessons() {
+		return dao.getNbOfLessons();
 	}
 }

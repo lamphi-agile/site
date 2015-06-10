@@ -31,6 +31,9 @@ public interface LessonDao {
 	@SqlQuery("select avg(rate) from notes where lessonid = :lessonid and ratedate > date('now')-7")
 	double getNoteWeekAverage(@Bind("lessonid") int lessonid);
 	
+	@SqlQuery("select count(*) from lessons")
+	int getNbOfLessons();
+	
 	@SqlQuery("select lessonid, avg(rate) as avg from notes where ratedate > date('now')-7 group by lessonid order by avg desc")
 	List<Lesson>  getBestNoteWeekAverage();
 	
@@ -58,4 +61,9 @@ public interface LessonDao {
 	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lessons.id) from lessons where category = :categoryId")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<Lesson> getLessonsByCategory(@Bind("categoryId") int categoryId);
+	
+	@SqlUpdate("update lessons set title=:title, content=:content, category=:category WHERE id=:id")
+	@GetGeneratedKeys
+	int update(@Bind("id") int id,@Bind("title") String title, @Bind("content") String content, @Bind("category") int idCategoryord);
+
 }
