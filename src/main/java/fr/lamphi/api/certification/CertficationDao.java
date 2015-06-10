@@ -19,6 +19,9 @@ public interface CertficationDao {
 
 	@SqlQuery("select count(*) from certifications where lessonid = :lessonid")
 	int getNbCertifications(@Bind("lessonid") int lessonid);
+	
+	@SqlQuery("select count(*) from certifications group by lessonid having count(*) > 1")
+	int getNbCertifications();
 
 	@SqlUpdate("drop table if exists certifications")
 	void dropCertficationsTable(); 

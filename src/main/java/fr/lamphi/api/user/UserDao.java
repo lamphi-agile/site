@@ -25,6 +25,9 @@ public interface UserDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
 	User findByLoginPassword(@Bind("username") String username, @Bind("password") String password);
 	
+	@SqlQuery("select count(*) from users")
+	int getNbOfUsers();
+	
 	@SqlQuery("select * from users limit :limit")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<User> getUsers(@Bind("limit") int limit);

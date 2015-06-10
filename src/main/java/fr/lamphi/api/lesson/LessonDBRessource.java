@@ -125,4 +125,8 @@ public class LessonDBRessource {
 	public List<Lesson> getLessonsByCategory(@PathParam("categoryId") int categoryId) {
 		return dao.getLessonsByCategory(categoryId);
 	}
+	
+	public int getNbOfLessons() {
+		return dao.getNbOfLessons();
+	}
 }
