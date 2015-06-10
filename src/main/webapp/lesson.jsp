@@ -180,6 +180,24 @@
 		$('#inputRating').on('rating.change', function(event, value, caption) {
 			console.log(value);
 			console.log(caption);
+			$.ajax({
+				type : 'POST',
+				contentType : 'application/json',
+				url : "/v1/lessondb/note",
+				dataType : "json",
+				data : JSON.stringify({
+					"lesson" : <% out.print(lesson.getId()); %>,
+					"user": <% out.print(lesson.getAuthor().getId()); %>,
+					"rate": value
+				}),
+				success : function(data, textStatus, jqXHR) {
+					afficheUser(data);
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert('postUser error: ' + textStatus);
+				}
+			});
+			
 		});
 		
 	</script>

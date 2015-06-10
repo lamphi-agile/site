@@ -10,22 +10,36 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface LessonDao {
-	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, idauthor int, createddate datetime, category int, note double default 0, views int default 0, foreign key(idauthor) references users(id))")
+	@SqlUpdate("create table lessons(id integer primary key autoincrement, title text, content text, idauthor int, createddate datetime, category int, views int default 0, foreign key(idauthor) references users(id))")
 	void createLessonsTable();
+
+	@SqlUpdate("create table notes(lessonid int, userid int, rate float, ratedate datetime, primary key(lessonid,userid))")
+	void createNotesTable();
+	
+	@SqlUpdate("replace into notes(lessonid, userid, rate,ratedate) values (:lessonid, :userid, :rate, date('now'))")
+	@GetGeneratedKeys
+	int insertNote(@Bind("lessonid") int lessonid, @Bind("userid") int userid, @Bind("rate") double rate);
+
 
 	@SqlUpdate("insert into lessons (title, content, idauthor, createddate, category) values (:title, :content, :idauthor, date('now'), :category)")
 	@GetGeneratedKeys
 	int insert(@Bind("title") String title, @Bind("content") String content, @Bind("idauthor") int idUser, @Bind("category") int idCategoryord);
 
-	@SqlQuery("select * from lessons where id = :id")
+	@SqlQuery("select avg(rate) from notes where lessonid = :lessonid")
+	double getNoteAverage(@Bind("lessonid") int lessonid);
+	
+	@SqlQuery("select avg(rate) from notes where lessonid = :lessonid and ratedate > date('now')-7")
+	double getNoteWeekAverage(@Bind("lessonid") int lessonid);
+	
+	@SqlQuery("select *, (select avg(rate) from notes where lessonid = :id) as note from lessons where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	Lesson findById(@Bind("id") int id);
 	
-	@SqlQuery("select * from lessons where title like '%' || :keywords || '%'")
+	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lesssons.id) from lessons where title like '%' || :keywords || '%'")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<Lesson> search(@Bind("keywords") String keywords);
 	
-	@SqlQuery("select * from lessons limit :limit")
+	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lessons.id) as note from lessons limit :limit")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<Lesson> getLessons(@Bind("limit") int limit);
 	
@@ -38,7 +52,7 @@ public interface LessonDao {
 	
 	void close();
 
-	@SqlQuery("select * from lessons where category = :categoryId")
+	@SqlQuery("select *, (select avg(rate) from notes where lessonid = lessons.id) from lessons where category = :categoryId")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	List<Lesson> getLessonsByCategory(@Bind("categoryId") int categoryId);
 }
