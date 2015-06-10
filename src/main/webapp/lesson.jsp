@@ -100,7 +100,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
-					<h3>Partager</h3>
+					<h3>Partagez</h3>
 					<a
 						href="http://www.facebook.com/share.php?u=http://localhost:8080/lesson.jsp?id=<%out.print(lesson.getId());%>"
 						target="_blank"> <img src="img/facebook.png" alt="facebook"
@@ -117,7 +117,7 @@
 					</a>
 				</div>
 				<div class="col-sm-offset-5 col-sm-3">
-					<h3>Note</h3><input id="inputRating" class="rating" data-symbol="&#xf19d;"
+					<h3>Notez</h3><input id="inputRating" class="rating" data-symbol="&#xf19d;"
 						data-glyphicon="false" data-rating-class="rating-fa"/>
 
 				</div>
