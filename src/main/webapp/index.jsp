@@ -1,6 +1,7 @@
 <%@page import="fr.lamphi.api.category.CategoryDBRessource"%>
 <%@page import="fr.lamphi.api.lesson.*"%>
 <%@page import="fr.lamphi.api.user.*"%>
+<%@page import="fr.lamphi.api.certification.*"%>
 <%@page import="fr.lamphi.api.*"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Random"%>
@@ -70,6 +71,7 @@
 								<%
 									List<Lesson> lessons = new LessonDBRessource().getLessons(10);
 									CategoryDBRessource cdbr = new CategoryDBRessource();
+									CertficationDBRessource cdbressource = new CertficationDBRessource();
 
 									for (Lesson lesson : lessons) {
 								%>
@@ -79,7 +81,11 @@
 											out.print(lesson.getId());
 										%>
 									</td>
-									<td><a href="lesson.jsp?id=<%out.print(lesson.getId());%>">
+									<td>
+									<a href="lesson.jsp?id=<%out.print(lesson.getId());%>"><%int nbCertifications = cdbressource.getNbCertfications(lesson.getId());
+										if(nbCertifications > 1) {
+											out.print("<i class=\"fa fa-certificate\"></i>");
+										}%>
 											<%
 												out.print(lesson.getTitle());
 											%>
@@ -108,9 +114,11 @@
 									</a>
 									</td>
 									<td>
+										<span class="badge">
 										<%
 											out.print(lesson.getNote());
 										%>
+										 sur 5</span>
 									</td>
 									<td>
 										<%
