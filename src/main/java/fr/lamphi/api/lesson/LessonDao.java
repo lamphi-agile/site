@@ -17,6 +17,12 @@ public interface LessonDao {
 	@GetGeneratedKeys
 	int insert(@Bind("title") String title, @Bind("content") String content, @Bind("idauthor") int idUser, @Bind("category") int idCategoryord);
 
+	@SqlQuery("select avg(rate) from notes where lessonid = :lessonid")
+	double getNoteAverage(@Bind("lessonid") int lessonid);
+	
+	@SqlQuery("select avg(rate) from notes where lessonid = :lessonid and ratedate > date('now')-7")
+	double getNoteWeekAverage(@Bind("lessonid") int lessonid);
+	
 	@SqlQuery("select * from lessons where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	Lesson findById(@Bind("id") int id);
